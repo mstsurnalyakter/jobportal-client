@@ -137,7 +137,7 @@ const AllJobs = () => {
                 <th className="p-3">Title</th>
                 <th className="p-3">Posting Date</th>
                 <th className="p-3">Deadline</th>
-                <th className="p-3">Salary</th>
+                <th className="p-3">Salary Range</th>
                 <th className="p-3"></th>
               </tr>
             </thead>
