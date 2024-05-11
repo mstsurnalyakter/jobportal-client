@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import logo from "/logo.png";
+import { Tooltip } from "react-tooltip";
 
 import {
   Navbar,
@@ -44,12 +45,13 @@ function ProfileMenu() {
         >
           <Avatar
             variant="circular"
-            title={user?.displayName}
             size="sm"
             alt="tania andrew"
+            id="profile"
             className="border border-gray-900 p-0.5"
             src={user?.photoURL || "https://i.ibb.co/hLmH9kQ/my-image.png"}
           />
+          <Tooltip anchorSelect="#profile" content={user?.displayName} />
           <ChevronDownIcon
             strokeWidth={2.5}
             className={`h-3 w-3 transition-transform ${
@@ -85,7 +87,6 @@ function ProfileMenu() {
             </div>
           </List>
         </MenuItem>
-
       </MenuList>
     </Menu>
   );
