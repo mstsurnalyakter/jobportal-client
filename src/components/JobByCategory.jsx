@@ -3,11 +3,14 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import useJobs from '../hooks/useJobs';
 import JobCard from "./JobCard";
+import Spinner from "./Spinner";
 
 const JobByCategory = () => {
   const {data,isLoading,refetch} = useJobs();
   if (isLoading) {
-    return <p className="text-center font-bold text-5xl">Loading..............</p>
+    return <div className="flex items-center justify-center mt-10">
+      <Spinner/>
+    </div>
   }
   console.log(data);
   return (

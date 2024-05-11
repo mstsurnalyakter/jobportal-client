@@ -41,7 +41,7 @@ const JobCard = ({job}) => {
           Author: {userName}
         </p>
       </div>
-      <button className="bg-[#FF4153] text-white px-2 py-1 rounded mt-3">
+      <button className="bg-[#FF4153] w-full text-white px-2 py-1 rounded mt-3">
         <Link to={`/job/${_id}`}>View Details</Link>
       </button>
     </div>
