@@ -33,7 +33,7 @@ const AuthProvider = ({children}) => {
   };
 
   //google signIn
-  const signInWithGoogle = () => {
+  const googleLogin = () => {
     setLoading(true);
     return signInWithPopup(auth, googleProvider);
   };
@@ -45,11 +45,11 @@ const AuthProvider = ({children}) => {
   };
 
   //Update user profile
-  const updateUserProfile = (fullName, photoURL) => {
+  const updateUserProfile = (name, photo) => {
     setLoading(true);
     return updateProfile(auth.currentUser, {
-      displayName: fullName,
-      photoURL: photoURL,
+      displayName: name,
+      photoURL: photo,
     });
   };
 
@@ -67,9 +67,9 @@ const AuthProvider = ({children}) => {
   const authInfo = {
     createUser,
     signIn,
-    signInWithGoogle,
-    updateUserProfile,
+    googleLogin,
     githubLogin,
+    updateUserProfile,
     logOut,
     user,
     setUser,
