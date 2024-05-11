@@ -118,7 +118,7 @@ function NavList() {
       </NavLink>
 
       <NavLink
-        to={"/add-job,"}
+        to={"/add-job"}
         className={({ isActive }) =>
           isActive
             ? "bg-[#FF4153] px-3 py-1  text-white  rounded-lg"
