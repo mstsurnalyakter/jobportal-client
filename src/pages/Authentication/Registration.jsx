@@ -59,7 +59,7 @@ const Register = () => {
       await createUser(email, password);
       await updateUserProfile(name, photo);
       setUser({ ...user, photoURL: photo, displayName: name });
-      toast.success("SignUp Successful");
+      toast.success("Register Successful");
       navigate(from);
     } catch (error) {
       toast.error(
@@ -82,7 +82,6 @@ const Register = () => {
   // if (user || loading) return;
 
   return (
-
     <div className="flex justify-center items-center min-h-[calc(100vh-306px)]">
       <div className="flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg  lg:max-w-4xl ">
         <div className="w-full px-6 py-8 md:px-8 lg:w-1/2">
@@ -237,13 +236,33 @@ const Register = () => {
                 {toggle ? <LuEye /> : <LuEyeOff />}
               </div>
             </div>
+            <div className="flex mt-4 items-center flex-row gap-2">
+              <input
+                className="cursor-pointer"
+                type="checkbox"
+                {...register("termsConditions", {
+                  required: {
+                    value: true,
+                    message: "You need to agree with terms and conditions",
+                  },
+                })}
+              />
+              <label className="label">
+                <span className="label-text">
+                  I agree with{" "}
+                  <Link className="underline text-[#0073e1]">
+                    terms & conditions
+                  </Link>
+                </span>
+              </label>
+            </div>
 
             <div className="mt-6">
               <button
                 type="submit"
                 className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-800 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50"
               >
-                Sign Up
+                Register
               </button>
             </div>
           </form>
