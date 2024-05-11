@@ -71,7 +71,7 @@ const Login = () => {
           </div>
 
           <p className="mt-3 text-xl text-center text-gray-600 ">
-            Login into your account
+            Welcome back!
           </p>
 
           <div
@@ -190,7 +190,7 @@ const Login = () => {
             <span className="w-1/5 border-b  md:w-1/4"></span>
 
             <Link
-              to="/login"
+              to="/registration"
               className="text-lg text-blue-700 underline  hover:underline"
             >
               or Register
