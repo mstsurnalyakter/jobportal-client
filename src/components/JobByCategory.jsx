@@ -12,7 +12,7 @@ const JobByCategory = () => {
       <Spinner/>
     </div>
   }
-  console.log(data);
+
   return (
     <>
       <Tabs>

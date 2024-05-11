@@ -3,6 +3,7 @@ import Main from "../layouts/Main";
 import Home from "../pages/Home/Home";
 import Registration from "../pages/Authentication/Registration";
 import Login from "../pages/Authentication/Login";
+import AllJobs from "../pages/AllJobs/AllJobs";
 
 const router = createBrowserRouter([
   {
@@ -15,11 +16,15 @@ const router = createBrowserRouter([
       },
       {
         path: "/registration",
-        element:<Registration/>
+        element: <Registration />,
       },
       {
         path: "/login",
-        element:<Login/>
+        element: <Login />,
+      },
+      {
+        path: "/all-jobs",
+        element:<AllJobs/>
       },
     ],
   },

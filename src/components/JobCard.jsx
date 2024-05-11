@@ -14,12 +14,12 @@ const JobCard = ({job}) => {
       maxSalary,
       jobApplicantsNumber
     } = job || {};
-    console.log(job);
+
   return (
     <div className="w-full mx-auto max-w-sm border border-[#FF4153] px-5 py-5 bg-white rounded-md shadow-md hover:scale-[1.05] transition-all">
       <div className="flex items-center justify-between">
         <span className="text-xs font-light text-gray-800 ">
-          Post: {new Date(jobPostingDate).toLocaleDateString()}
+          Posting Date: {new Date(jobPostingDate).toLocaleDateString()}
         </span>
         <span className="text-xs font-light text-gray-800 ">
           Deadline: {new Date(applicationDeadline).toLocaleDateString()}
