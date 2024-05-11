@@ -1,48 +1,55 @@
-import React from 'react'
+
 import PropTypes from 'prop-types'
 import { Link } from "react-router-dom";
+
 
 const JobCard = ({job}) => {
     const {
       _id,
       jobTitle,
-      description,
-      minPrice,
-      maxPrice,
-      category,
-      deadline,
-      bid_count,
+      userName,
+      jobPostingDate,
+      applicationDeadline,
+      minSalary,
+      maxSalary,
+      jobApplicantsNumber
     } = job || {};
+    console.log(job);
   return (
-    <div className="w-full max-w-sm px-4 py-3 bg-white rounded-md shadow-md hover:scale-[1.05] transition-all">
+    <div className="w-full mx-auto max-w-sm border border-[#FF4153] px-5 py-5 bg-white rounded-md shadow-md hover:scale-[1.05] transition-all">
       <div className="flex items-center justify-between">
         <span className="text-xs font-light text-gray-800 ">
-          Deadline: {new Date(deadline).toLocaleDateString()}
+          Post: {new Date(jobPostingDate).toLocaleDateString()}
         </span>
-        <span className="px-3 py-1 text-[8px] text-blue-800 uppercase bg-blue-200 rounded-full ">
-          {category}
+        <span className="text-xs font-light text-gray-800 ">
+          Deadline: {new Date(applicationDeadline).toLocaleDateString()}
         </span>
       </div>
 
       <div>
-        <h1 className="mt-2 text-lg font-semibold text-gray-800 ">
+        <h1 className="mt-2  text-lg font-semibold text-[#FF4153] ">
           {jobTitle}
         </h1>
 
-        <p title={description} className="mt-2 text-sm text-gray-600 ">
-          {description.substring(0, 70)}...
+        <p className="mt-2 text-sm font-medium text-gray-600 ">
+          Salary: ${minSalary} - ${maxSalary}/month
         </p>
-        <p className="mt-2 text-sm font-bold text-gray-600 ">
-          Range: ${minPrice} - $1{maxPrice}
+        <p className="mt-2 text-sm font-medium text-gray-600 ">
+          applicants: {jobApplicantsNumber}
         </p>
-        <p className="mt-2 text-sm font-bold text-gray-600 ">
-          Bids Count: {bid_count}
+        <p className="mt-2 text-sm font-medium text-gray-600 ">
+          Author: {userName}
         </p>
       </div>
+      <button className="bg-[#FF4153] text-white px-2 py-1 rounded mt-3">
+        <Link to={`/job/${_id}`}>View Details</Link>
+      </button>
     </div>
   );
 }
 
-JobCard.propTypes = {}
+JobCard.propTypes = {
+  job:PropTypes.object.isRequired
+}
 
 export default JobCard

@@ -1,9 +1,15 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
+import useJobs from '../hooks/useJobs';
+import JobCard from "./JobCard";
 
 const JobByCategory = () => {
+  const {data,isLoading,refetch} = useJobs();
+  if (isLoading) {
+    return <p className="text-center font-bold text-5xl">Loading..............</p>
+  }
+  console.log(data);
   return (
     <>
       <Tabs>
@@ -13,42 +19,59 @@ const JobByCategory = () => {
           </h1>
 
           <p className="max-w-2xl mx-auto my-6 text-center text-gray-500 ">
-            Three categories available for the time being. They are Web
-            Development, Graphics Design and Digital Marketing. Browse them by
-            clicking on the tabs below.
+            Are you seeking the perfect job that aligns with your preferred work
+            setup? Look no further! Our comprehensive job listings cover a
+            variety of work arrangements, ensuring you find the ideal fit.
+            Whether you’re interested in on-site positions, remote work, hybrid
+            roles, or part-time opportunities, explore our categorized listings
+            to discover your next career move.
           </p>
-          <div className="flex justify-center mb-6">
+          <div className="flex justify-center mb-10 mt-10">
             <TabList>
-              <Tab>Web Development</Tab>
-              <Tab>Graphics Design</Tab>
-              <Tab>Digital Marketing</Tab>
+              <Tab>On-Site Job</Tab>
+              <Tab>Remote Job</Tab>
+              <Tab>Hybrid</Tab>
+              <Tab>Part-Time Job</Tab>
+              <Tab>All Jobs</Tab>
             </TabList>
           </div>
 
           <TabPanel>
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {data?.length &&
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 ">
+              {data?.length > 0 &&
                 data
-                  ?.filter((j) => j.category === "Web Development")
+                  ?.filter((j) => j.jobCategory === "On Site")
                   .map((job) => <JobCard key={job?._id} job={job} />)}
             </div>
           </TabPanel>
-
           <TabPanel>
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {data?.length &&
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 ">
+              {data?.length > 0 &&
                 data
-                  ?.filter((j) => j.category === "Graphics Design")
+                  ?.filter((j) => j.jobCategory === "Remote")
                   .map((job) => <JobCard key={job?._id} job={job} />)}
             </div>
           </TabPanel>
-
           <TabPanel>
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {data?.length &&
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 ">
+              {data?.length > 0 &&
                 data
-                  ?.filter((j) => j.category === "Digital Marketing")
+                  ?.filter((j) => j.jobCategory === "Part-Time")
                   .map((job) => <JobCard key={job?._id} job={job} />)}
+            </div>
+          </TabPanel>
+          <TabPanel>
+            <div className="grid grid-cols-1  gap-6 md:grid-cols-2 lg:grid-cols-3 ">
+              {data?.length > 0 &&
+                data
+                  ?.filter((j) => j.jobCategory === "Hybrid")
+                  .map((job) => <JobCard key={job?._id} job={job} />)}
+            </div>
+          </TabPanel>
+          <TabPanel>
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 ">
+              {data?.length > 0 &&
+                data.map((job) => <JobCard key={job?._id} job={job} />)}
             </div>
           </TabPanel>
         </div>
@@ -57,6 +80,6 @@ const JobByCategory = () => {
   );
 }
 
-JobByCategory.propTypes = {};
+
 
 export default JobByCategory;
