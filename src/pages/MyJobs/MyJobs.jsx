@@ -105,7 +105,7 @@ const handleDelete = async (id) => {
                 <th className="p-3">Posting Date</th>
                 <th className="p-3">Deadline</th>
                 <th className="p-3">Salary Range</th>
-                <th className="p-3">applicants</th>
+                <th className="p-3">Applicants</th>
                 <th className="p-3">Delete</th>
                 <th className="p-3">Edit</th>
               </tr>
