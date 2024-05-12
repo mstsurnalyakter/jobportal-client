@@ -34,10 +34,8 @@ const JobDetails = () => {
   return (
     <div>
       <header className="">
-        <div
-          className="h-[350px]"
-        >
-            <img src={image} alt="" className="w-full h-full" />
+        <div className="h-[350px]">
+          <img src={image} alt="" className="w-full h-full" />
         </div>
       </header>
 
@@ -58,7 +56,7 @@ const JobDetails = () => {
           <b>Type:</b> {jobCategory}
         </p>
         <p>
-          <b>Salary:</b> ${minSalary}-${maxSalary}
+          <b>Salary Range:</b> ${minSalary}-${maxSalary}
           <span className="text-sm">/month</span>
         </p>
         <p>
