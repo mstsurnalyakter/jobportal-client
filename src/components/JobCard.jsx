@@ -7,22 +7,22 @@ const JobCard = ({job}) => {
     const {
       _id,
       jobTitle,
-      userName,
-      jobPostingDate,
-      applicationDeadline,
+      user,
+      postingDate,
+      deadline,
       minSalary,
       maxSalary,
-      jobApplicantsNumber
+      jobApplicantsNumber,
     } = job || {};
 
   return (
     <div className="w-full mx-auto max-w-sm border border-[#FF4153] px-5 py-5 bg-white rounded-md shadow-md hover:scale-[1.05] transition-all">
       <div className="flex items-center justify-between">
         <span className="text-xs font-light text-gray-800 ">
-          Posting Date: {new Date(jobPostingDate).toLocaleDateString()}
+          Posting Date: {new Date(postingDate).toLocaleDateString()}
         </span>
         <span className="text-xs font-light text-gray-800 ">
-          Deadline: {new Date(applicationDeadline).toLocaleDateString()}
+          Deadline: {new Date(deadline).toLocaleDateString()}
         </span>
       </div>
 
@@ -38,7 +38,7 @@ const JobCard = ({job}) => {
           applicants: {jobApplicantsNumber}
         </p>
         <p className="mt-2 text-sm font-medium text-gray-600 ">
-          Author: {userName}
+          Author: {user?.name}
         </p>
       </div>
       <button className="bg-[#FF4153] w-full text-white px-2 py-1 rounded mt-3">

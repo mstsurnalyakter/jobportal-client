@@ -60,10 +60,10 @@ const AddJob = () => {
       image,
       jobTitle,
       minSalary,
-      postingDate,
       maxSalary,
-      deadline,
       jobCategory,
+      postingDate,
+      deadline,
       jobDescription,
       jobApplicantsNumber: 0,
       user: {

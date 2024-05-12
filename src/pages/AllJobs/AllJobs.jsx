@@ -147,8 +147,8 @@ const AllJobs = () => {
                   const {
                     _id,
                     jobTitle,
-                    jobPostingDate,
-                    applicationDeadline,
+                    postingDate,
+                    deadline,
                     minSalary,
                     maxSalary,
                   } = job || {};
@@ -162,12 +162,10 @@ const AllJobs = () => {
                         <p>{jobTitle}</p>
                       </td>
                       <td className="p-3">
-                        <p>{new Date(jobPostingDate).toLocaleDateString()}</p>
+                        <p>{new Date(postingDate).toLocaleDateString()}</p>
                       </td>
                       <td className="p-3">
-                        <p>
-                          {new Date(applicationDeadline).toLocaleDateString()}
-                        </p>
+                        <p>{new Date(deadline).toLocaleDateString()}</p>
                       </td>
                       <td className="p-3">
                         <p>
