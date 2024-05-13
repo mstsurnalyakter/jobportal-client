@@ -154,7 +154,7 @@ function NavList() {
         className={({ isActive }) =>
           isActive
             ? "bg-[#FF4153] px-3 py-1 flex items-center justify-center  text-white  rounded-lg"
-            : "text-[#f33245] border border-[#FF4153] px-3 py-1 rounded-lg"
+            : "p-2 text-[#131313CC]"
         }
       >
         Applied Jobs

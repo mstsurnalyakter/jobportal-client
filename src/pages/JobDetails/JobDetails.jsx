@@ -47,7 +47,6 @@ const url2 = "http://localhost:5000/apply-job";
     },
   });
 
-
      const handleApply = async () => {
        const {
          _id,
@@ -77,7 +76,6 @@ const url2 = "http://localhost:5000/apply-job";
            jobDescription,
            user1,
          };
-
 
 
          await mutateAsync(applicationData);
@@ -127,6 +125,7 @@ const url2 = "http://localhost:5000/apply-job";
       }
     });
   };
+
 
 
 
