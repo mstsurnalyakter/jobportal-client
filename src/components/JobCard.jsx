@@ -38,7 +38,7 @@ const JobCard = ({job}) => {
           applicants: {jobApplicantsNumber}
         </p>
         <p className="mt-2 text-sm font-medium text-gray-600 ">
-          Author: {user?.name}
+          Employer : {user?.name}
         </p>
       </div>
       <button className="bg-[#FF4153] w-full text-white px-2 py-1 rounded mt-3">

@@ -36,12 +36,10 @@ const AddJob = () => {
           // navigate("/");
         }
       } catch (error) {
-        throw new Error(error.response?.data?.message || "Failed to add job");
+        toast.error(error.message)
       }
     },
-    onError: (error) => {
-      console.error("Error during mutation:", error);
-    },
+
   });
 
   const onSubmit = async (data) => {
