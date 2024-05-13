@@ -6,16 +6,17 @@ import useAuth from "../../hooks/useAuth";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 // import { useNavigate } from "react-router-dom";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { useParams } from "react-router";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import Spinner from "../../components/Spinner";
 
-const AddJob = () => {
-  // const navigate = useNavigate();
-
+const UpdateJob = () => {
   const { user } = useAuth();
+  const { id } = useParams();
+  const axiosSecure = useAxiosSecure();
 
-  const [startDate1, setStartDate1] = useState(new Date());
-  const [startDate2, setStartDate2] = useState(new Date());
 
   const {
     register,
@@ -23,25 +24,70 @@ const AddJob = () => {
     formState: { errors },
   } = useForm();
 
-  const url = "http://localhost:5000/add-jobs";
 
-  const { mutateAsync } = useMutation({
-    mutationKey: ["addJob"],
-    mutationFn: async (jobInfo) => {
-      try {
-        const { data } = await axios.post(url, jobInfo);
-
-        if (data.insertedId) {
-          toast.success("Post Job successfully");
-          // navigate("/");
-        }
-        return data
-      } catch (error) {
-        toast.error(error.message)
-      }
+  const url = `/update-job/${id}`;
+  const {
+    data: singleData = {},
+    isLoading,
+    refetch,
+    isError,
+    error,
+  } = useQuery({
+    queryKey: ["update-job"],
+    queryFn: async () => {
+      const { data } = await axiosSecure(url);
+      return data;
     },
-
   });
+
+
+
+
+  const {
+    image,
+    jobTitle,
+    minSalary,
+    maxSalary,
+    jobCategory,
+    postingDate,
+    deadline,
+    jobDescription,
+    jobApplicantsNumber,
+    user:user1,
+  } = singleData || {};
+
+
+  const [startDate1, setStartDate1] = useState(
+    new Date(postingDate || new Date())
+  );
+
+  const [startDate2, setStartDate2] = useState(
+    new Date(deadline || new Date())
+  );
+
+
+
+    const { mutateAsync } = useMutation({
+      mutationKey: ["update-data"],
+      mutationFn: async ({jobInfo,id}) => {
+        try {
+            const { data } = await axios.put(
+              `${import.meta.env.VITE_API_URL}/update-job/${id}`,
+              jobInfo
+            );
+            if (data.modifiedCount > 0) {
+             toast.success("Successful job update");
+              refetch();
+            // navigate("/my-posted-job");
+      }
+            console.log(data);
+            return data;
+        } catch (error) {
+                toast.error(error.message)
+        }
+      },
+    });
+
 
   const onSubmit = async (data) => {
     const {
@@ -52,8 +98,7 @@ const AddJob = () => {
       jobCategory,
       jobDescription,
     } = data;
-    const postingDate = startDate1;
-    const deadline = startDate2;
+
 
     const jobInfo = {
       image,
@@ -61,22 +106,39 @@ const AddJob = () => {
       minSalary,
       maxSalary,
       jobCategory,
-      postingDate,
-      deadline,
+      postingDate:startDate1,
+      deadline:startDate2,
       jobDescription,
-      jobApplicantsNumber: 0,
-      user: {
-        email: user?.email,
-        name: user?.displayName,
-      },
+      jobApplicantsNumber: jobApplicantsNumber,
+      user: user1,
     };
-
+console.log(id);
     try {
-      await mutateAsync(jobInfo);
+    //   const { data } = await axiosSecure.put(url, jobInfo);
+    //   if (data.modifiedCount > 0) {
+    //     toast.success("Successful job update");
+    //     refetch();
+    //     // navigate("/my-posted-job");
+    //   }
+    await mutateAsync({jobInfo,id})
     } catch (error) {
       toast.error(error.message);
     }
+
   };
+
+    if (isLoading) {
+      return (
+        <div className="flex items-center justify-center mt-10">
+          <Spinner />
+        </div>
+      );
+    }
+
+    if (isError) {
+      toast.error(error.message);
+    }
+
 
   return (
     <div className=" border border-[#FF4153]">
@@ -87,7 +149,7 @@ const AddJob = () => {
             <span className="mr-3 text-[#FF4153]">
               <MdAlarmAdd />
             </span>
-            <span className="">Post A Job</span>
+            <span className="">Update A Job</span>
           </p>
         </div>
         {/* form */}
@@ -104,6 +166,7 @@ const AddJob = () => {
                   name="image"
                   id="image"
                   placeholder="Image"
+                  defaultValue={image}
                   {...register("image", { required: true })}
                 />
               </div>
@@ -118,6 +181,7 @@ const AddJob = () => {
                   placeholder="Job Title"
                   id="jobTitle"
                   name="jobTitle"
+                  defaultValue={jobTitle}
                   {...register("jobTitle", { required: true })}
                 />
               </div>
@@ -132,6 +196,7 @@ const AddJob = () => {
                   placeholder="Minimum Salary"
                   id="minSalary"
                   name="minSalary"
+                  defaultValue={minSalary}
                   {...register("minSalary", { required: true })}
                 />
               </div>
@@ -183,6 +248,7 @@ const AddJob = () => {
                 <input
                   className="w-full p-2 border-2 rounded-md focus:outline-[#FF4153]"
                   type="number"
+                  defaultValue={maxSalary}
                   placeholder="Maximum Salary"
                   id="maxSalary"
                   name="maxSalary"
@@ -208,9 +274,10 @@ const AddJob = () => {
             className="w-full p-2 border-2 rounded-md focus:outline-[#FF4153]"
             type="text"
             placeholder="Select Job Category"
+            defaultValue={jobCategory}
             {...register("jobCategory", { required: true })}
           >
-            <option value="">Select Job Category</option>
+            {/* <option value="">Select Job Category</option> */}
             <option value="On Site">On Site</option>
             <option value="Remote">Remote</option>
             <option value="Part-Time">Part-Time</option>
@@ -228,6 +295,7 @@ const AddJob = () => {
               id="jobDescription"
               name="jobDescription"
               placeholder="Enter Job Description"
+              defaultValue={jobDescription}
               className="textarea textarea-bordered border-2 p-2 rounded-md w-full focus:outline-[#f18691]"
             ></textarea>
           </div>
@@ -236,7 +304,7 @@ const AddJob = () => {
             className="px-4 w-full py-2 mt-4 rounded  bg-gradient-to-r from-[#FF4153] via-purple-600 to-[#FF4153] bg-300% text-transparent animate-gradient
               duration-200 text-white cursor-pointer font-semibold"
             type="submit"
-            value="Add"
+            value="Save"
           />
         </form>
       </div>
@@ -244,4 +312,4 @@ const AddJob = () => {
   );
 };
 
-export default AddJob;
+export default UpdateJob;

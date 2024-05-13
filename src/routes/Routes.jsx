@@ -8,11 +8,14 @@ import AddJob from "../pages/AddJob/AddJob";
 import MyJobs from "../pages/MyJobs/MyJobs";
 import JobDetails from "../pages/JobDetails/JobDetails";
 import AppliedJobs from "../pages/AppliedJobs/AppliedJobs";
+import UpdateJob from "../pages/UpdateJob/UpdateJob";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main />,
+    errorElement:<ErrorPage/>,
     children: [
       {
         index: true,
@@ -46,6 +49,10 @@ const router = createBrowserRouter([
         path: "/applied-jobs",
         element:<AppliedJobs/>
       },
+      {
+        path:"/update-job/:id",
+        element:<UpdateJob/>
+      }
     ],
   },
 ]);

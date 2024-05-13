@@ -1,12 +1,12 @@
 import { useParams } from "react-router";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import Spinner from "../../components/Spinner";
 import toast from "react-hot-toast";
 import  { useState } from 'react';
 import axios from 'axios';
-import { useMutation } from '@tanstack/react-query';
+// import { useMutation } from '@tanstack/react-query';
 import useAuth from "../../hooks/useAuth";
 
 const JobDetails = () => {
