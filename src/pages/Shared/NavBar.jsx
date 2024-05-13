@@ -66,7 +66,7 @@ function ProfileMenu() {
             <div className="flex">
               <UserCircleIcon className="w-5" />
               <NavLink
-                to={"/my-profile"}
+                to={"/profile"}
                 className={({ isActive }) =>
                   isActive
                     ? "text-[#FF4153] px-3 py-1  rounded-lg"
@@ -167,7 +167,7 @@ const NavBar = () => {
   const [openNav, setOpenNav] = useState(false);
   const { user } = useAuth();
 
-  //kkkkkkkkkkkkkk
+
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "system");
   const element = document.documentElement;
   const darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
@@ -224,7 +224,7 @@ const NavBar = () => {
       }
     }
   });
-  //kkkkkkkkkkkkkk
+
 
   useEffect(() => {
     window.addEventListener(
@@ -266,7 +266,6 @@ const NavBar = () => {
             </div>
           </div>
           <div className="flex flex-col sm:flex-row gap-4">
-            {/* kkkkkkkkkkkkkkkkkkk */}
             {/* Theme Toggle Buttons */}
             <div className=" bg-[#FF4153]  rounded">
               {options?.map((opt) => (
@@ -281,7 +280,6 @@ const NavBar = () => {
                 </button>
               ))}
             </div>
-            {/* kkkkkkkkkkkkkkkkkkk */}
             <IconButton
               variant="text"
               color="blue-gray"
