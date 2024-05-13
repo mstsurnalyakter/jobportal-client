@@ -80,7 +80,7 @@ const AddJob = () => {
 
   return (
     <div className=" border border-[#FF4153]">
-      <div className="shadow-lg  p-5  dark:bg-[#1a2641d5]">
+      <div className="shadow-lg  p-5  dark:bg-[#1a2641d5] dark:text-gray-100">
         {/* Heading */}
         <div className="mt-5 mb-8">
           <p className="flex items-center justify-center text-3xl font-semibold bg-gradient-to-r from-[#e58891] via-purple-400 to-[#FF4153] bg-300% text-transparent bg-clip-text animate-gradient">
@@ -205,7 +205,7 @@ const AddJob = () => {
           <select
             name="jobCategory"
             id="jobCategory"
-            className="w-full p-2 border-2 rounded-md focus:outline-[#FF4153]"
+            className="w-full p-2 border-2 dark:text-gray-900 rounded-md focus:outline-[#FF4153]"
             type="text"
             placeholder="Select Job Category"
             {...register("jobCategory", { required: true })}

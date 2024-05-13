@@ -112,14 +112,8 @@ const UpdateJob = () => {
       jobApplicantsNumber: jobApplicantsNumber,
       user: user1,
     };
-console.log(id);
+
     try {
-    //   const { data } = await axiosSecure.put(url, jobInfo);
-    //   if (data.modifiedCount > 0) {
-    //     toast.success("Successful job update");
-    //     refetch();
-    //     // navigate("/my-posted-job");
-    //   }
     await mutateAsync({jobInfo,id})
     } catch (error) {
       toast.error(error.message);
@@ -142,7 +136,7 @@ console.log(id);
 
   return (
     <div className=" border border-[#FF4153]">
-      <div className="shadow-lg  p-5  dark:bg-[#1a2641d5]">
+      <div className="shadow-lg  p-5 dark:text-gray-100  dark:bg-[#1a2641d5]">
         {/* Heading */}
         <div className="mt-5 mb-8">
           <p className="flex items-center justify-center text-3xl font-semibold bg-gradient-to-r from-[#e58891] via-purple-400 to-[#FF4153] bg-300% text-transparent bg-clip-text animate-gradient">
@@ -271,13 +265,12 @@ console.log(id);
           <select
             name="jobCategory"
             id="jobCategory"
-            className="w-full p-2 border-2 rounded-md focus:outline-[#FF4153]"
+            className="w-full dark:text-gray-900 p-2 border-2 rounded-md focus:outline-[#FF4153]"
             type="text"
             placeholder="Select Job Category"
             defaultValue={jobCategory}
             {...register("jobCategory", { required: true })}
           >
-            {/* <option value="">Select Job Category</option> */}
             <option value="On Site">On Site</option>
             <option value="Remote">Remote</option>
             <option value="Part-Time">Part-Time</option>
@@ -296,7 +289,7 @@ console.log(id);
               name="jobDescription"
               placeholder="Enter Job Description"
               defaultValue={jobDescription}
-              className="textarea textarea-bordered border-2 p-2 rounded-md w-full focus:outline-[#f18691]"
+              className="textarea textarea-bordered dark:text-gray-900 border-2 p-2 rounded-md w-full focus:outline-[#f18691]"
             ></textarea>
           </div>
 

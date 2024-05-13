@@ -122,7 +122,7 @@ const AppliedJobs = () => {
                       key={_id}
                       className="border-b border-opacity-20 dark:border-gray-300 dark:bg-gray-50"
                     >
-                      <td>{index + 1}</td>
+                      <td className="text-center">{index + 1}</td>
                       <td className="p-3">
                         <p>{jobTitle}</p>
                       </td>

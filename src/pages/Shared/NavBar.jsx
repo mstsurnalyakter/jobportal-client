@@ -167,7 +167,64 @@ const NavBar = () => {
   const [openNav, setOpenNav] = useState(false);
   const { user } = useAuth();
 
+  //kkkkkkkkkkkkkk
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "system");
+  const element = document.documentElement;
+  const darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
+  const options = [
+    {
+      icon: "sunny",
+      text: "light",
+    },
+    {
+      icon: "moon",
+      text: "dark",
+    },
+    {
+      icon: "desktop-outline",
+      text: "system",
+    },
+  ];
+
+  const onWindowMatch = () => {
+    if (
+      localStorage.theme === "dark" ||
+      (!("theme" in localStorage) && darkQuery.matches)
+    ) {
+      element.classList.add("dark");
+    } else {
+      element.classList.remove("dark");
+    }
+  };
+
+  useEffect(() => {
+    switch (theme) {
+      case "dark":
+        element.classList.add("dark");
+        localStorage.setItem("theme", "dark");
+        break;
+      case "light":
+        element.classList.remove("dark");
+        localStorage.setItem("theme", "light");
+        break;
+      default:
+        localStorage.removeItem("theme");
+        onWindowMatch();
+        break;
+    }
+  }, [theme]);
+
+  darkQuery.addEventListener("change", (e) => {
+    if (!("theme" in localStorage)) {
+      if (e.matches) {
+        element.classList.add("dark");
+      } else {
+        element.classList.remove("dark");
+      }
+    }
+  });
+  //kkkkkkkkkkkkkk
 
   useEffect(() => {
     window.addEventListener(
@@ -177,7 +234,7 @@ const NavBar = () => {
   }, []);
 
   return (
-    <div className="shadow-lg sticky top-0   z-50">
+    <div className="shadow-lg sticky top-0 z-50 dark:bg-slate-900 duration-100">
       <Navbar className="mx-auto max-w-7xl  shadow-none rounded-none px-3 lg:px-2 pt-4  mb-6 lg:py-5">
         <div className="flex items-center justify-between">
           <Typography className="mr-4 cursor-pointer py-1.5 lg:ml-2 flex items-center">
@@ -209,6 +266,22 @@ const NavBar = () => {
             </div>
           </div>
           <div className="flex flex-col sm:flex-row gap-4">
+            {/* kkkkkkkkkkkkkkkkkkk */}
+            {/* Theme Toggle Buttons */}
+            <div className=" bg-[#FF4153]  rounded">
+              {options?.map((opt) => (
+                <button
+                  onClick={() => setTheme(opt.text)}
+                  key={opt.text}
+                  className={`w-8 h-8 leading-9 text-xl rounded-full m-1 ${
+                    theme === opt.text ? "text-blue-600" : ""
+                  }`}
+                >
+                  <ion-icon name={opt.icon}></ion-icon>
+                </button>
+              ))}
+            </div>
+            {/* kkkkkkkkkkkkkkkkkkk */}
             <IconButton
               variant="text"
               color="blue-gray"
@@ -229,7 +302,9 @@ const NavBar = () => {
         <Collapse open={openNav}>
           <NavList />
 
-          <div className="flex items-center justify-center">{user && <ProfileMenu />}</div>
+          <div className="flex items-center justify-center">
+            {user && <ProfileMenu />}
+          </div>
           <div className="">
             {!user && (
               <div className="flex gap-5 flex-col">

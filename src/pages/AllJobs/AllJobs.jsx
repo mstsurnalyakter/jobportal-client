@@ -121,7 +121,7 @@ const AllJobs = () => {
         </div>
       </header>
 
-      <div className="shadow-md border mx-auto px-1 py-1 lg:py-10 lg:px-10">
+      <div className="shadow-md border mx-auto px-1  py-1 lg:py-10 lg:px-10">
         <div className="overflow-x-auto">
           <table className="min-w-full text-xs">
             <colgroup>
@@ -133,7 +133,7 @@ const AllJobs = () => {
             </colgroup>
             <thead className="dark:bg-gray-300">
               <tr className="text-left border-b border-[#FF4153] border-opacity-20 text-[#FF4153] ">
-                <th className="p-3"></th>
+                <th className="p-3 "></th>
                 <th className="p-3">Title</th>
                 <th className="p-3">Posting Date</th>
                 <th className="p-3">Deadline</th>
@@ -155,9 +155,9 @@ const AllJobs = () => {
                   return (
                     <tr
                       key={_id}
-                      className="border-b border-opacity-20 dark:border-gray-300 dark:bg-gray-50"
+                      className="border-b border-opacity-20  dark:border-gray-300 dark:bg-gray-50"
                     >
-                      <td>{index + 1}</td>
+                      <td className="text-center">{index + 1}</td>
                       <td className="p-3">
                         <p>{jobTitle}</p>
                       </td>
@@ -192,7 +192,7 @@ const AllJobs = () => {
         <button
           onClick={() => handlePaginationButton(currentPage - 1)}
           disabled={currentPage === 1}
-          className="px-4 py-2 mx-1 text-gray-700 disabled:text-gray-500 capitalize bg-gray-200 rounded-md disabled:cursor-not-allowed disabled:hover:bg-gray-200 disabled:hover:text-gray-500 hover:bg-[#FF4153]  hover:text-white"
+          className="px-4 py-2 mx-1 text-gray-700 dark:text-gray-900 disabled:text-gray-500 capitalize bg-gray-200 rounded-md disabled:cursor-not-allowed disabled:hover:bg-gray-200 disabled:hover:text-gray-500 hover:bg-[#FF4153]  hover:text-white"
         >
           <div className="flex items-center -mx-1">
             <svg
@@ -220,8 +220,8 @@ const AllJobs = () => {
             key={btnNum}
             onClick={() => handlePaginationButton(btnNum)}
             className={`hidden ${
-              currentPage === btnNum ? "bg-[#FF4153] text-white" : ""
-            } px-4 py-2 mx-1 transition-colors duration-300 transform  rounded-md sm:inline hover:bg-[#FF4153]  hover:text-white`}
+              currentPage === btnNum ? "bg-[#FF4153] text-white " : ""
+            } px-4 py-2 mx-1 transition-colors duration-300 dark:text-gray-100 transform  rounded-md sm:inline hover:bg-[#FF4153]  hover:text-white`}
           >
             {btnNum}
           </button>
@@ -231,7 +231,7 @@ const AllJobs = () => {
         <button
           onClick={() => handlePaginationButton(currentPage + 1)}
           disabled={currentPage === numberOfPages}
-          className="px-4 py-2 mx-1 text-gray-700 transition-colors duration-300 transform bg-gray-200 rounded-md hover:bg-[#FF4153] disabled:hover:bg-gray-200 disabled:hover:text-gray-500 hover:text-white disabled:cursor-not-allowed disabled:text-gray-500"
+          className="px-4 py-2 mx-1 text-gray-700 dark:text-gray-900 transition-colors duration-300 transform bg-gray-200 rounded-md hover:bg-[#FF4153] disabled:hover:bg-gray-200 disabled:hover:text-gray-500 hover:text-white disabled:cursor-not-allowed disabled:text-gray-500"
         >
           <div className="flex items-center -mx-1">
             <span className="mx-1">Next</span>

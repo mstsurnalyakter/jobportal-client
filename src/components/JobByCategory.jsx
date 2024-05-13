@@ -16,12 +16,12 @@ const JobByCategory = () => {
   return (
     <>
       <Tabs>
-        <div>
-          <h1 className="text-2xl font-semibold text-center text-gray-800 capitalize lg:text-3xl ">
+        <div className="">
+          <h1 className="text-2xl font-semibold text-center text-gray-800 dark:text-gray-100 capitalize lg:text-3xl ">
             Browse Jobs By Categories
           </h1>
 
-          <p className="max-w-2xl mx-auto my-6 text-center text-gray-500 ">
+          <p className="max-w-2xl mx-auto my-6 text-center text-gray-500 dark:text-gray-100">
             Are you seeking the perfect job that aligns with your preferred work
             setup? Look no further! Our comprehensive job listings cover a
             variety of work arrangements, ensuring you find the ideal fit.
