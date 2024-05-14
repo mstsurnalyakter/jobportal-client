@@ -83,7 +83,7 @@ const AddJob = () => {
   return (
     <div className=" border border-[#FF4153]">
       <DynamicTitle pageTitle="Add Job" />
-      <div className="shadow-lg  p-5  dark:bg-[#1a2641d5] dark:text-gray-100">
+      <div className="shadow-lg  p-5  dark:bg-[#1a2641d5] dark:text-gray-500">
         {/* Heading */}
         <div className="mt-5 mb-8">
           <p className="flex items-center justify-center text-3xl font-semibold bg-gradient-to-r from-[#e58891] via-purple-400 to-[#FF4153] bg-300% text-transparent bg-clip-text animate-gradient">
