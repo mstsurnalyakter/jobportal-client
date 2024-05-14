@@ -75,7 +75,7 @@ const Blogs = () => {
                 </Link>
               </div>
             </a>
-            {/* kkkkkkkkkkkkkkkkkkkkkkkkkkkk */}
+
             <a
               rel="noopener noreferrer"
               href="#"
@@ -88,20 +88,30 @@ const Blogs = () => {
               />
               <div className="p-6 space-y-2">
                 <h3 className="text-2xl font-semibold group-hover:underline group-focus:underline">
-                  In usu laoreet repudiare legendos
+                  Job Portal Project Code Explanation
                 </h3>
-                <span className="text-xs dark:text-gray-600">
-                  January 22, 2021
-                </span>
+                <span className="text-xs dark:text-gray-600">May 14, 2024</span>
                 <p>
-                  Mei ex aliquid eleifend forensibus, quo ad dicta apeirian
-                  neglegentur, ex has tantas percipit perfecto. At per tempor
-                  albucius perfecto, ei probatus consulatu patrioque mea, ei
-                  vocent delicata indoctum pri.
+                  Welcome to the behind-the-scenes journey of creating "Job
+                  Portal," a feature-rich platform designed to revolutionize the
+                  job-seeking experience. In this blog, we'll unravel the
+                  intricate details of how this dynamic website was crafted
+                  using the MERN stack (MongoDB, Express.js, React, and
+                  Node.js). From setting up the development environment to
+                  implementing advanced features like authentication, job
+                  listings management, and application handling, we'll explore
+                  every aspect of the codebase to provide a comprehensive
+                  understanding of the project............
                 </p>
+                <Link className="" to={"/code-explain"}>
+                  <button className="bg-[#FF4153] px-3 flex items-center mt-4 gap-2 py-2 rounded-md text-white">
+                    <span>Read More</span>
+                    <ion-icon name="arrow-forward-outline"></ion-icon>
+                  </button>
+                </Link>
               </div>
             </a>
-            {/* kkkkkkkkkkkkkkkkkkkkkkkkkkkk */}
+
           </div>
         </div>
       </section>

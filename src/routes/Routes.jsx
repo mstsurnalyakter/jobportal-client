@@ -16,6 +16,7 @@ import Blogs from "../pages/Blogs/Blogs";
 import TokenDetails from "../pages/TokenDetails/TokenDetails";
 import FrameworksBlog from "../pages/FrameworksBlog/FrameworksBlog";
 import PrivateRoute from "../provider/PrivateRoute";
+import CodeExplanationBlog from "../pages/CodeExplanationBlog/CodeExplanationBlog";
 
 const router = createBrowserRouter([
   {
@@ -107,6 +108,10 @@ const router = createBrowserRouter([
       {
         path: "/frameworks-blog",
         element: <FrameworksBlog />,
+      },
+      {
+        path: "/code-explain",
+        element:<CodeExplanationBlog/>
       },
     ],
   },
