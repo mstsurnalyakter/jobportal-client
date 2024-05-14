@@ -85,7 +85,7 @@ const AuthProvider = ({children}) => {
 
         //if user exists then issue a token
         axios
-          .post(`http://localhost:5000/jwt`, loggedUser, {
+          .post(`https://jobportal-server-ochre.vercel.app/jwt`, loggedUser, {
             withCredentials: true,
           })
           .then((res) => {
@@ -96,9 +96,13 @@ const AuthProvider = ({children}) => {
           });
       } else {
         axios
-          .post(`http://localhost:5000/logout`, loggedUser, {
-            withCredentials: true,
-          })
+          .post(
+            `https://jobportal-server-ochre.vercel.app/logout`,
+            loggedUser,
+            {
+              withCredentials: true,
+            }
+          )
           .then((res) => {})
           .catch((error) => {
             toast.error(error.message);
