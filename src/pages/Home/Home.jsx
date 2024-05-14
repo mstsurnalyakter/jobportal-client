@@ -1,6 +1,7 @@
 import Banner from "../../components/Banner"
 import JobByCategory from "../../components/JobByCategory"
 import JobProcess from "../../components/JobProcess";
+import Testimonials from "../../components/Testimonials";
 
 
 const Home = () => {
@@ -9,6 +10,7 @@ const Home = () => {
       <Banner />
       <JobByCategory />
       <JobProcess/>
+      <Testimonials/>
     </div>
   );
 }
