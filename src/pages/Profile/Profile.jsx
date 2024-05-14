@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { motion } from "framer-motion";
+import DynamicTitle from "../../components/DynamicTitle";
 
 
 const Profile = () => {
      const { user } = useAuth();
   return (
     <div className="flex  min-h-[500px] items-center justify-center">
+      <DynamicTitle pageTitle="Profile" />
       <motion.div
         animate={{
           scale: [1, 1.1, 1.1, 1, 1],
@@ -72,7 +74,6 @@ const Profile = () => {
           )}
         </div>
       </motion.div>
-  
     </div>
   );
 }

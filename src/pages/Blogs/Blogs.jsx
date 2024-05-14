@@ -3,11 +3,13 @@ import token from "/Access_vs_refresh_token_blog_thumbnail.webp"
 import frameworks from "/Nest.js-vs.-Express.webp"
 import code from '/code.jfif'
 import { Typography } from "@material-tailwind/react";
+import DynamicTitle from "../../components/DynamicTitle";
 
 const Blogs = () => {
   return (
     <div>
       <section className="dark:bg-gray-100 dark:text-gray-800">
+        <DynamicTitle pageTitle="Blogs" />
         <div className="container max-w-6xl p-6 mx-auto space-y-6 sm:space-y-12">
           <a
             rel="noopener noreferrer"
@@ -100,9 +102,7 @@ const Blogs = () => {
               </div>
             </a>
             {/* kkkkkkkkkkkkkkkkkkkkkkkkkkkk */}
-
           </div>
-          
         </div>
       </section>
     </div>

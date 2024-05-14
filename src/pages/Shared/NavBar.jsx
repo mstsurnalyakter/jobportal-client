@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import logo from "/logo.png";
-import { Tooltip } from "react-tooltip";
+
 
 import {
   Navbar,
@@ -8,89 +8,13 @@ import {
   Typography,
   IconButton,
   List,
-  Menu,
-  MenuHandler,
-  Button,
-  Avatar,
-  MenuList,
-  MenuItem,
+
 } from "@material-tailwind/react";
-import { Bars3Icon, ChevronDownIcon, PowerIcon, UserCircleIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Bars3Icon,  XMarkIcon } from "@heroicons/react/24/outline";
 
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
-
-
-
-function ProfileMenu() {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-    const { user, logOut } = useAuth();
-
-        const handleLogOut = () => {
-          logOut()
-            .then(() => {})
-            .catch((error) => toast.error(error.message));
-        };
-
-  const closeMenu = () => setIsMenuOpen(false);
-
-  return (
-    <Menu open={isMenuOpen} handler={setIsMenuOpen} placement="bottom-end">
-      <MenuHandler>
-        <Button
-          variant="text"
-          color="blue-gray"
-          className="flex items-center gap-1 rounded-full py-0.5 pr-2 pl-0.5 lg:ml-auto"
-        >
-          <Avatar
-            variant="circular"
-            size="sm"
-            alt="tania andrew"
-            id="profile"
-            className="border border-gray-900 p-0.5"
-            src={user?.photoURL || "https://i.ibb.co/hLmH9kQ/my-image.png"}
-          />
-          <Tooltip anchorSelect="#profile" content={user?.displayName} />
-          <ChevronDownIcon
-            strokeWidth={2.5}
-            className={`h-3 w-3 transition-transform ${
-              isMenuOpen ? "rotate-180" : ""
-            }`}
-          />
-        </Button>
-      </MenuHandler>
-      <MenuList className="p-1">
-        <MenuItem onClick={closeMenu}>
-          <List className="flex flex-col">
-            <div className="flex">
-              <UserCircleIcon className="w-5" />
-              <NavLink
-                to={"/profile"}
-                className={({ isActive }) =>
-                  isActive
-                    ? "text-[#FF4153] px-3 py-1  rounded-lg"
-                    : "p-2 text-[#131313CC]"
-                }
-              >
-                My Profile
-              </NavLink>
-            </div>
-            <div className="flex gap-2">
-              <PowerIcon className="w-5" />
-              <button
-                onClick={handleLogOut}
-                className="bg-[#f56d7a] rounded text-white px-3 py-1"
-              >
-                Logout
-              </button>
-            </div>
-          </List>
-        </MenuItem>
-      </MenuList>
-    </Menu>
-  );
-}
 
 
 function NavList() {
@@ -119,27 +43,31 @@ function NavList() {
         All Jobs
       </NavLink>
 
-    { user &&  <NavLink
-        to={"/add-job"}
-        className={({ isActive }) =>
-          isActive
-            ? "bg-[#FF4153] px-3 py-1  text-white  rounded-lg"
-            : "p-2 text-[#131313CC]"
-        }
-      >
-        Add A Job
-      </NavLink>}
+      {user && (
+        <NavLink
+          to={"/add-job"}
+          className={({ isActive }) =>
+            isActive
+              ? "bg-[#FF4153] px-3 py-1  text-white  rounded-lg"
+              : "p-2 text-[#131313CC]"
+          }
+        >
+          Add A Job
+        </NavLink>
+      )}
 
-     {user && <NavLink
-        to={"/my-jobs"}
-        className={({ isActive }) =>
-          isActive
-            ? "bg-[#FF4153] px-3 py-1  text-white  rounded-lg"
-            : "p-2 text-[#131313CC]"
-        }
-      >
-        My Jobs
-      </NavLink>}
+      {user && (
+        <NavLink
+          to={"/my-jobs"}
+          className={({ isActive }) =>
+            isActive
+              ? "bg-[#FF4153] px-3 py-1  text-white  rounded-lg"
+              : "p-2 text-[#131313CC]"
+          }
+        >
+          My Jobs
+        </NavLink>
+      )}
       <NavLink
         to={"/blogs"}
         className={({ isActive }) =>
@@ -150,23 +78,44 @@ function NavList() {
       >
         Blogs
       </NavLink>
-      {user && <NavLink
-        to={"/applied-jobs"}
-        className={({ isActive }) =>
-          isActive
-            ? "bg-[#FF4153] px-3 py-1 flex items-center justify-center  text-white  rounded-lg"
-            : "p-2 text-[#131313CC]"
-        }
-      >
-        Applied Jobs
-      </NavLink>}
+      {user && (
+        <NavLink
+          to={"/applied-jobs"}
+          className={({ isActive }) =>
+            isActive
+              ? "bg-[#FF4153] px-3 py-1 flex items-center justify-center  text-white  rounded-lg"
+              : "p-2 text-[#131313CC]"
+          }
+        >
+          Applied Jobs
+        </NavLink>
+      )}
+      {user && (
+        <NavLink
+          to={"/profile"}
+          className={({ isActive }) =>
+            isActive
+              ? "bg-[#FF4153] px-3 py-1 flex items-center justify-center  text-white  rounded-lg"
+              : "p-2 text-[#131313CC]"
+          }
+        >
+          Profile
+        </NavLink>
+      )}
     </List>
   );
 }
 
 const NavBar = () => {
   const [openNav, setOpenNav] = useState(false);
-  const { user } = useAuth();
+
+  const { user, logOut } = useAuth();
+
+    const handleLogOut = () => {
+      logOut()
+        .then(() => {})
+        .catch((error) => toast.error(error.message));
+    };
 
 
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "system");
@@ -247,8 +196,6 @@ const NavBar = () => {
             <NavList />
           </div>
           <div className="hidden gap-4 lg:flex items-center">
-            {user && <ProfileMenu />}
-
             <div>
               {!user && (
                 <div className="flex gap-2">
@@ -262,6 +209,22 @@ const NavBar = () => {
                   >
                     Login
                   </NavLink>
+                </div>
+              )}
+              {user && (
+                <div className="flex items-center justify-center gap-3">
+                  <button
+                    onClick={() => handleLogOut()}
+                    className="bg-[#d53b4b] px-3 py-1 flex items-center justify-center  text-white  rounded-lg"
+                  >
+                    Logout
+                  </button>
+                  <img
+                    title={user?.displayName}
+                    className="rounded-full w-10 h-10"
+                    src={user?.photoURL}
+                    alt=""
+                  />
                 </div>
               )}
             </div>
@@ -300,10 +263,24 @@ const NavBar = () => {
 
         <Collapse open={openNav}>
           <NavList />
+          {user && (
+            <div className="flex items-center justify-center gap-3">
+              <button
+                onClick={() => handleLogOut()}
+                className="bg-[#d53b4b] px-3 py-1 flex items-center justify-center  text-white  rounded-lg"
+              >
+                Logout
+              </button>
+              <img
+                title={user?.displayName}
+                className="rounded-full w-10 h-10"
+                src={user?.photoURL}
+                alt=""
+              />
+            </div>
+          )}
 
-          <div className="flex items-center justify-center">
-            {user && <ProfileMenu />}
-          </div>
+          <div className="flex items-center justify-center"></div>
           <div className="">
             {!user && (
               <div className="flex gap-5 flex-col">

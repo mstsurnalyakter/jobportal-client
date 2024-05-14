@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
+import DynamicTitle from "../../components/DynamicTitle";
 
 const UpdateProfile = () => {
   const { user, updateUserProfile, setUser } = useAuth();
@@ -38,8 +39,8 @@ const UpdateProfile = () => {
   };
 
   return (
-
     <div className=" border border-[#FF4153]">
+      <DynamicTitle pageTitle="Update Job" />
       <div className="shadow-lg  p-5  dark:bg-[#1a2641d5] dark:text-gray-100">
         {/* Heading */}
         <div className="mt-5 mb-8">

@@ -1,4 +1,4 @@
-import img from '../../public/test-img.webp'
+import img from '/test-img.webp'
 import TestimonialsCard from './TestimonialsCard/TestimonialsCard';
 
 const Testimonials = () => {

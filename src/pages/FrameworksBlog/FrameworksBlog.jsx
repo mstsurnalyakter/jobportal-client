@@ -1,9 +1,11 @@
 import { Typography } from "@material-tailwind/react";
 import frameworks from "/Nest.js-vs.-Express.webp";
+import DynamicTitle from "../../components/DynamicTitle";
 
 const FrameworksBlog = () => {
   return (
     <div>
+      <DynamicTitle pageTitle="Blog Details" />
       <div className="pl-10">
         <header className="">
           <div className="h-[350px]">

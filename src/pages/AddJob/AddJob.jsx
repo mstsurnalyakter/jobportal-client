@@ -8,6 +8,8 @@ import toast from "react-hot-toast";
 // import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
+import DynamicTitle from "../../components/DynamicTitle";
+
 
 const AddJob = () => {
   // const navigate = useNavigate();
@@ -80,6 +82,7 @@ const AddJob = () => {
 
   return (
     <div className=" border border-[#FF4153]">
+      <DynamicTitle pageTitle="Add Job" />
       <div className="shadow-lg  p-5  dark:bg-[#1a2641d5] dark:text-gray-100">
         {/* Heading */}
         <div className="mt-5 mb-8">

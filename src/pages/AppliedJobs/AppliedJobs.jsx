@@ -5,6 +5,7 @@ import axios from "axios";
 import Spinner from "../../components/Spinner";
 import toast from "react-hot-toast";
 import banner from "../../assets/images/banner/banner.jfif";
+import DynamicTitle from "../../components/DynamicTitle";
 
 
 
@@ -24,7 +25,7 @@ const AppliedJobs = () => {
     queryFn: async () => {
       const { data } = await axios(
         `${import.meta.env.VITE_API_URL}/applied-job?email=${
-          user?.email}&filter=${filter}`
+          user?.email}&filter=${filter}`,{withCredentials:true}
       );
       console.log("inside", data);
       return data;
@@ -47,6 +48,7 @@ const AppliedJobs = () => {
 
   return (
     <div>
+      <DynamicTitle pageTitle="Applied Job" />
       <header>
         <div
           className="w-full   object-cover bg-cover h-[160px]"
@@ -57,7 +59,7 @@ const AppliedJobs = () => {
           <div className="flex items-center justify-center w-full h-full bg-gray-900/40">
             <div className="text-center">
               <h1 className="text-3xl font-semibold text-white lg:text-4xl">
-               Applied Jobs
+                Applied Jobs
               </h1>
               <div className="mt-3">
                 <select

@@ -1,10 +1,12 @@
 
 import { Link } from 'react-router-dom';
 import error from "/error.jfif"
+import DynamicTitle from '../../components/DynamicTitle';
 
 const ErrorPage = () => {
   return (
     <div>
+      <DynamicTitle pageTitle="400 Page" />
       <section className="flex items-center min-h-screen justify-center">
         <div className="container flex flex-col items-center justify-center px-5 mx-auto my-8">
           <div className="max-w-md flex items-center justify-center flex-col">

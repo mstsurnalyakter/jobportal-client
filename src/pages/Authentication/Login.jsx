@@ -6,6 +6,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
+import DynamicTitle from "../../components/DynamicTitle";
 
 const Login = () => {
   const [toggle, setToggle] = useState(false);
@@ -37,7 +38,7 @@ const Login = () => {
     try {
     const result =  await signIn(email, password);
 
-      if (result?.user) {
+      if (result) {
         toast.success("Successfully logged in!");
         setTimeout(() => {
           navigate(from);
@@ -57,7 +58,7 @@ const Login = () => {
     try {
      const result = await googleLogin();
 
-     if (result?.user) {
+     if (result) {
          toast.success("SignIn with Google Successful");
        setTimeout(() => {
          navigate(from);
@@ -78,6 +79,7 @@ const Login = () => {
 
   return (
     <div className="flex justify-center items-center min-h-[calc(100vh-306px)]">
+      <DynamicTitle pageTitle="Login" />
       <div className="flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg  lg:max-w-4xl ">
         <div className="w-full px-6 py-8 md:px-8 lg:w-1/2">
           <div className="flex justify-center mx-auto">

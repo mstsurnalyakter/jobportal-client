@@ -8,6 +8,7 @@ import  { useState } from 'react';
 import axios from 'axios';
 // import { useMutation } from '@tanstack/react-query';
 import useAuth from "../../hooks/useAuth";
+import DynamicTitle from "../../components/DynamicTitle";
 
 const JobDetails = () => {
   const { id } = useParams();
@@ -161,6 +162,7 @@ const url2 = "http://localhost:5000/apply-job";
   return (
     <div>
       <header className="">
+        <DynamicTitle pageTitle="Job Details" />
         <div className="h-[350px]">
           <img src={image} alt="" className="w-full h-full" />
         </div>

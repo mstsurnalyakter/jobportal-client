@@ -8,6 +8,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
+import DynamicTitle from "../../components/DynamicTitle";
 
 const Register = () => {
   const [toggle, setToggle] = useState(false);
@@ -54,7 +55,7 @@ const Register = () => {
      const result = await createUser(email, password);
       await updateUserProfile(name, photo);
       setUser({ ...user, photoURL: photo, displayName: name });
-       if (result?.user) {
+       if (result) {
          toast.success("Successfully Register!");
 
          setTimeout(() => {
@@ -89,6 +90,7 @@ const Register = () => {
 
   return (
     <div className="flex justify-center items-center min-h-[calc(100vh-306px)]">
+      <DynamicTitle pageTitle="Register" />
       <div className="flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg  lg:max-w-4xl ">
         <div className="w-full px-6 py-8 md:px-8 lg:w-1/2">
           <div className="flex justify-center mx-auto">

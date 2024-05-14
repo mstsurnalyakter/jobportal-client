@@ -1,4 +1,5 @@
 import Banner from "../../components/Banner"
+import DynamicTitle from "../../components/DynamicTitle";
 import JobByCategory from "../../components/JobByCategory"
 import JobProcess from "../../components/JobProcess";
 import Testimonials from "../../components/Testimonials";
@@ -13,6 +14,7 @@ const Home = () => {
      });
   return (
     <div className="space-y-20 dark:text-gray-100">
+      <DynamicTitle pageTitle="Home" />
       <motion.div className="progress-bar" style={{ scaleX }} />
       <Banner />
       <JobByCategory />

@@ -1,22 +1,23 @@
 import toast from "react-hot-toast";
 import Spinner from "../../components/Spinner";
 import useAuth from "../../hooks/useAuth";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
+
 import { useMutation, useQuery} from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
+import DynamicTitle from "../../components/DynamicTitle";
 
 const MyJobs = () => {
-  const axiosSecure = useAxiosSecure();
-  const { user } = useAuth();
 
-  const url = `/my-jobs/${user?.email}`;
+  const { user } = useAuth();
 
   const { data, isLoading, refetch, isError, error } = useQuery({
     queryKey: ["my-jobs", user?.email],
     queryFn: async () => {
-      const { data } = await axiosSecure(url);
+      const { data } = await axios(
+        `${import.meta.env.VITE_API_URL}/my-jobs/${user?.email}`
+      );
       return data;
     },
   });
@@ -83,6 +84,7 @@ const handleDelete = async (id) => {
 
   return (
     <div>
+      <DynamicTitle pageTitle="My Jobs" />
       <div className="shadow-md border mx-auto px-1 py-1 lg:py-10 lg:px-10">
         <div className="overflow-x-auto">
           <table className="min-w-full text-xs">

@@ -3,6 +3,10 @@ import PropTypes from 'prop-types'
 import { createContext, useEffect, useState } from 'react'
 import {  GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import auth from '../firebase/firebase.config';
+import toast from 'react-hot-toast';
+import axios from 'axios';
+
+
 
 //Social Auth Provider
 const googleProvider = new GoogleAuthProvider();
@@ -11,6 +15,7 @@ const githubProvider = new GithubAuthProvider();
 export const AuthContext = createContext(null);
 
 const AuthProvider = ({children}) => {
+
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -29,7 +34,7 @@ const AuthProvider = ({children}) => {
   //logout user
   const logOut = () => {
     setUser(null);
-    return signOut();
+    return signOut(auth);
   };
 
   //google signIn
@@ -53,12 +58,53 @@ const AuthProvider = ({children}) => {
     });
   };
 
-  // onAuthStateChange
+
+//   useEffect(() => {
+//     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+
+
+// // console.log(currentUser);
+
+//       // if (currentUser) {
+//       //   setUser(currentUser);
+
+//       // }
+//       // setLoading(false);
+//     });
+//     return () => unsubscribe();
+//   }, []);
+
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      const userEmail = currentUser?.email || user?.email;
+      const loggedUser = { email: userEmail };
+
       if (currentUser) {
         setUser(currentUser);
+
+        //if user exists then issue a token
+        axios
+          .post(`http://localhost:5000/jwt`, loggedUser, {
+            withCredentials: true,
+          })
+          .then((res) => {
+            //
+          })
+          .catch((error) => {
+            toast.error(error.message);
+          });
+      } else {
+        axios
+          .post(`http://localhost:5000/logout`, loggedUser, {
+            withCredentials: true,
+          })
+          .then((res) => {})
+          .catch((error) => {
+            toast.error(error.message);
+          });
       }
+
       setLoading(false);
     });
     return () => unsubscribe();

@@ -7,6 +7,7 @@ import { useState } from "react";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import toast from "react-hot-toast";
+import DynamicTitle from "../../components/DynamicTitle";
 
 const AllJobs = () => {
   // const {data,isLoading,refetch} = useJobs();
@@ -86,6 +87,7 @@ const AllJobs = () => {
 
   return (
     <div>
+      <DynamicTitle pageTitle="All Job" />
       <header>
         <div
           className="w-full   object-cover bg-cover h-[140px]"

@@ -1,10 +1,12 @@
 import { Typography } from '@material-tailwind/react';
 import token from '/public/Access_vs_refresh_token_blog_thumbnail.webp'
+import DynamicTitle from '../../components/DynamicTitle';
 
 const TokenDetails = () => {
   return (
-    <div className='pl-10'>
+    <div className="pl-10">
       <div>
+        <DynamicTitle pageTitle="Blog Details" />
         <header className="">
           <div className="h-[350px]">
             <img src={token} alt="" className="w-full h-full" />
