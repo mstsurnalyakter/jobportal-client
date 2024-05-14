@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import Spinner from "../../components/Spinner";
 import useJobs from "../../hooks/useJobs";
 import banner from "../../assets/images/banner/banner.jfif";
-import { Button, Input } from "@material-tailwind/react";
 import { useState } from "react";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";

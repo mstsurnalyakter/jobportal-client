@@ -25,13 +25,15 @@ const AddJob = () => {
     formState: { errors },
   } = useForm();
 
-  const url = "http://localhost:5000/add-jobs";
+  const url =
+    "https://jobportal-server-qizgohd1t-mstsurnalyakters-projects.vercel.app/add-jobs";
 
   const { mutateAsync } = useMutation({
     mutationKey: ["addJob"],
     mutationFn: async (jobInfo) => {
       try {
-        const { data } = await axios.post(url, jobInfo);
+        const { data } = await axios.post(url, jobInfo,{withCredentials:true
+        });
 
         if (data.insertedId) {
           toast.success("Post Job successfully");
