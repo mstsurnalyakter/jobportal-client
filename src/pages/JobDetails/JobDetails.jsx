@@ -166,7 +166,7 @@ const url2 = "http://localhost:5000/apply-job";
         </div>
       </header>
 
-      <div className="shadow-md border space-y-5 mx-auto px-8 py-8 lg:py-10 lg:px-10">
+      <div className="shadow-md dark:bg-gray-300 border space-y-5 mx-auto px-8 py-8 lg:py-10 lg:px-10">
         <h2 className="text-4xl font-medium">{jobTitle}</h2>
         <div className="flex gap-3">
           <p>

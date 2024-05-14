@@ -7,7 +7,7 @@ const Profile = () => {
   return (
     <div className="flex  min-h-[500px] items-center justify-center">
       <div className="flex  min-h-[500px] relative items-center justify-center">
-        {/* kkkkkkkkkkkkk */}
+
         <Link
           to={`/update-profile`}
           className=" absolute top-20 right-2 transition-colors duration-200 text-white   hover:text-yellow-500 focus:outline-none"
@@ -27,7 +27,7 @@ const Profile = () => {
             />
           </svg>
         </Link>
-        {/* kkkkkkkkkkkkk */}
+     
         {user && (
           <div
             className="flex border w-80 md:w-96 flex-col py-16 justify-center mx-auto  shadow-md  text-white rounded-xl sm:px-12
