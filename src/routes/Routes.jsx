@@ -12,6 +12,9 @@ import UpdateJob from "../pages/UpdateJob/UpdateJob";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Profile from "../pages/Profile/Profile";
 import UpdateProfile from "../pages/UpdateProfile/UpdateProfile";
+import Blogs from "../pages/Blogs/Blogs";
+import TokenDetails from "../pages/TokenDetails/TokenDetails";
+import FrameworksBlog from "../pages/FrameworksBlog/FrameworksBlog";
 
 const router = createBrowserRouter([
   {
@@ -57,12 +60,24 @@ const router = createBrowserRouter([
       },
       {
         path: "/profile",
-        element:<Profile/>
+        element: <Profile />,
       },
       {
-        path:"/update-profile",
-        element:<UpdateProfile/>
-      }
+        path: "/update-profile",
+        element: <UpdateProfile />,
+      },
+      {
+        path: "/blogs",
+        element: <Blogs />,
+      },
+      {
+        path: "/token-blog",
+        element: <TokenDetails />,
+      },
+      {
+        path: "/frameworks-blog",
+        element:<FrameworksBlog/>
+      },
     ],
   },
 ]);

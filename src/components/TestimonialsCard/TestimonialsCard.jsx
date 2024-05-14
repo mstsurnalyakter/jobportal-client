@@ -8,7 +8,6 @@ import "swiper/css/effect-cards";
 
 // import required modules
 import { EffectCards, Autoplay } from "swiper/modules";
-import './TestimonialsCard.css'
 import Card1 from "./Card1";
 import Card2 from "./Card2";
 import Card3 from "./Card3";
