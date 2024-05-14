@@ -53,6 +53,7 @@ const AddJob = () => {
       maxSalary,
       jobCategory,
       jobDescription,
+      jobApplicantsNumber,
     } = data;
     const postingDate = startDate1;
     const deadline = startDate2;
@@ -66,7 +67,7 @@ const AddJob = () => {
       postingDate,
       deadline,
       jobDescription,
-      jobApplicantsNumber: 0,
+      jobApplicantsNumber,
       user: {
         email: user?.email,
         name: user?.displayName,
@@ -96,7 +97,7 @@ const AddJob = () => {
         {/* form */}
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="flex gap-8 ">
-            <div className="flex-1 space-y-4">
+            <div className="flex-1 space-y-6">
               <div>
                 <label className="block mb-2 " htmlFor="image">
                   Image
@@ -147,6 +148,24 @@ const AddJob = () => {
                   onChange={(date) => setStartDate1(date)}
                   className="p-2 border-2 rounded-md focus:outline-[#FF4153]  w-full"
                 />
+              </div>
+
+              <div className="">
+                <select
+                  name="jobCategory"
+                  id="jobCategory"
+                  className="w-full p-2  border-2 dark:text-gray-900 rounded-md focus:outline-[#FF4153]"
+                  type="text"
+                  placeholder="Select Job Category"
+                  {...register("jobCategory", { required: true })}
+                >
+                  <option value="">Select Job Category</option>
+                  <option value="On Site">On Site</option>
+                  <option value="Remote">Remote</option>
+                  <option value="Part-Time">Part-Time</option>
+                  <option value="Glass Painting">Glass Painting</option>
+                  <option value="Hybrid">Hybrid</option>
+                </select>
               </div>
             </div>
             {/* Right side */}
@@ -202,24 +221,22 @@ const AddJob = () => {
                   className="p-2 border-2 rounded-md focus:outline-[#FF4153]  w-full"
                 />
               </div>
+              <div>
+                <label className="block mb-2 " htmlFor="name">
+                  Applicants
+                </label>
+                <input
+                  className="w-full dark:text-white p-2 border-2 rounded-md focus:outline-[#FF4153]"
+                  type="text"
+                  name="jobApplicantsNumber"
+                  defaultValue={0}
+                  {...register("jobDescription")}
+                  id="jobApplicantsNumber"
+                  disabled
+                />
+              </div>
             </div>
           </div>
-
-          <select
-            name="jobCategory"
-            id="jobCategory"
-            className="w-full p-2 border-2 dark:text-gray-900 rounded-md focus:outline-[#FF4153]"
-            type="text"
-            placeholder="Select Job Category"
-            {...register("jobCategory", { required: true })}
-          >
-            <option value="">Select Job Category</option>
-            <option value="On Site">On Site</option>
-            <option value="Remote">Remote</option>
-            <option value="Part-Time">Part-Time</option>
-            <option value="Glass Painting">Glass Painting</option>
-            <option value="Hybrid">Hybrid</option>
-          </select>
 
           <div className="mt-4">
             <label className="block mb-2 " htmlFor="jobDescription">
