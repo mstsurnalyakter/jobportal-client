@@ -5,7 +5,10 @@ const Testimonials = () => {
     <div>
       <div>
         <h2>What Our Candidates Say</h2>
-        <p></p>
+        <p>
+          Discover the voices of success! Our candidates speak for themselves
+          about their transformative experiences
+        </p>
       </div>
       <section className="">
         <div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
