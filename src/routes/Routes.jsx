@@ -15,6 +15,7 @@ import UpdateProfile from "../pages/UpdateProfile/UpdateProfile";
 import Blogs from "../pages/Blogs/Blogs";
 import TokenDetails from "../pages/TokenDetails/TokenDetails";
 import FrameworksBlog from "../pages/FrameworksBlog/FrameworksBlog";
+import PrivateRoute from "../provider/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -40,31 +41,60 @@ const router = createBrowserRouter([
       },
       {
         path: "/add-job",
-        element: <AddJob />,
+        element: (
+          <PrivateRoute>
+            <AddJob />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/my-jobs",
-        element: <MyJobs />,
+        element: (
+          <PrivateRoute>
+            <MyJobs />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/job/:id",
-        element: <JobDetails />,
+        element: (
+          <PrivateRoute>
+            <JobDetails />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/applied-jobs",
-        element: <AppliedJobs />,
+        element: (
+          <PrivateRoute>
+            {" "}
+            <AppliedJobs />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/update-job/:id",
-        element: <UpdateJob />,
+        element: (
+          <PrivateRoute>
+            <UpdateJob />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/profile",
-        element: <Profile />,
+        element: (
+          <PrivateRoute>
+            <Profile />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/update-profile",
-        element: <UpdateProfile />,
+        element: (
+          <PrivateRoute>
+            <UpdateProfile />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/blogs",
@@ -76,7 +106,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/frameworks-blog",
-        element:<FrameworksBlog/>
+        element: <FrameworksBlog />,
       },
     ],
   },
