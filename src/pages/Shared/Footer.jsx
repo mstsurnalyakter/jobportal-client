@@ -120,7 +120,7 @@ const Footer = () => {
                 <Link to={"/all-jobs"}>All Jobs</Link>
               </li>
               <li>
-                <Link to={"/register"}>Create Account</Link>
+                <Link to={"/registration"}>Create Account</Link>
               </li>
               <li>
                 <Link to={"/add-job"}>Add A Job</Link>
@@ -129,7 +129,7 @@ const Footer = () => {
                 <Link to={"/my-jobs"}> My Jobs</Link>
               </li>
               <li>
-                <Link to={"/my-jobs"}> Blogs</Link>
+                <Link to={"/blogs"}> Blogs</Link>
               </li>
               <li>
                 <Link to={"/applied-jobs"}>Applied Jobs</Link>
@@ -196,8 +196,8 @@ const Footer = () => {
       <div className="border-b-2 border-[#13131326]"></div>
       <div className="py-6 text-sm text-center dark:text-gray-600">
         <p className="text-[#e8ded4]">
-          Copyright © {new Date().getFullYear()} - All right reserved by{" "}
-          Job <span className="text-[#FF4153]">Portal</span>
+          Copyright © {new Date().getFullYear()} - All right reserved by Job{" "}
+          <span className="text-[#FF4153]">Portal</span>
         </p>
       </div>
     </footer>
