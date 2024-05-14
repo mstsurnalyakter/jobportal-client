@@ -23,8 +23,6 @@ const JobByCategory = () => {
     const handleUser = () => {
       if (!user) {
         toast.error("You have to log in first to view details");
-        navigate("/login");
-        return;
       }
     };
 
