@@ -7,12 +7,20 @@ import toast from "react-hot-toast";
 import banner from "../../assets/images/banner/banner.jfif";
 import DynamicTitle from "../../components/DynamicTitle";
 
+import { LuDownload } from "react-icons/lu";
+
+
+import { useRef } from "react";
+import generatePDF from "react-to-pdf";
 
 
 
 const AppliedJobs = () => {
   const [filter, setFilter] = useState("");
   const { user } = useAuth();
+
+  const targetRef = useRef();
+
 
   const {
     data = [],
@@ -21,34 +29,45 @@ const AppliedJobs = () => {
     isError,
     error,
   } = useQuery({
-    queryKey: ["applied-job", user?.email,filter],
+    queryKey: ["applied-job", user?.email, filter],
     queryFn: async () => {
       const { data } = await axios(
         `${import.meta.env.VITE_API_URL}/applied-job?email=${
-          user?.email}&filter=${filter}`,{withCredentials:true}
+          user?.email
+        }&filter=${filter}`,
+        { withCredentials: true }
       );
       console.log("inside", data);
       return data;
     },
   });
 
-    if (isLoading) {
-      return (
-        <div className="flex items-center justify-center mt-10">
-          <Spinner />
-        </div>
-      );
-    }
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center mt-10">
+        <Spinner />
+      </div>
+    );
+  }
 
-    if (isError) {
-      toast.error(error.message);
-    }
+  if (isError) {
+    toast.error(error.message);
+  }
 
   console.log("outside", data);
 
   return (
     <div>
       <DynamicTitle pageTitle="Applied Job" />
+
+
+      <button
+        className="bg-[#FF4153] px-3 py-1  text-white  rounded-lg flex items-center gap-4"
+        onClick={() => generatePDF(targetRef, { filename: "page.pdf" })}
+      >
+        Download<LuDownload />
+      </button>
+
       <header>
         <div
           className="w-full   object-cover bg-cover h-[160px]"
@@ -83,7 +102,10 @@ const AppliedJobs = () => {
         </div>
       </header>
 
-      <div className="shadow-md border mx-auto px-1 py-1 lg:py-10 lg:px-10">
+      <div
+        ref={targetRef}
+        className="shadow-md border mx-auto px-1 py-1 lg:py-10 lg:px-10"
+      >
         <div className="overflow-x-auto">
           <table className="min-w-full text-xs">
             <colgroup>
