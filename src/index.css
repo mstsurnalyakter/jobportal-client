@@ -3,3 +3,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.progress-bar {
+  position: fixed;
+  z-index: 100 !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background:#FF4153;
+  transform-origin: 0%;
+}
