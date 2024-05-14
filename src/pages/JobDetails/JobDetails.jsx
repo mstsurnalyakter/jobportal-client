@@ -27,8 +27,7 @@ const JobDetails = () => {
     },
   });
 
-const url2 =
-  "https://jobportal-server-qizgohd1t-mstsurnalyakters-projects.vercel.app/apply-job";
+const url2 = "https://jobportal-server-ochre.vercel.app/apply-job";
 
 
   const { mutateAsync } = useMutation({

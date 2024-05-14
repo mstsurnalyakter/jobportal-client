@@ -25,8 +25,7 @@ const AddJob = () => {
     formState: { errors },
   } = useForm();
 
-  const url =
-    "https://jobportal-server-qizgohd1t-mstsurnalyakters-projects.vercel.app/add-jobs";
+  const url = "https://jobportal-server-ochre.vercel.app/add-jobs";
 
   const { mutateAsync } = useMutation({
     mutationKey: ["addJob"],
