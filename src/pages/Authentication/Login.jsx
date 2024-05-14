@@ -9,18 +9,14 @@ import toast from "react-hot-toast";
 
 const Login = () => {
   const [toggle, setToggle] = useState(false);
-  const { signIn, googleLogin } = useAuth();
+  const { signIn, googleLogin} = useAuth();
 
   // navigate user
   const navigate = useNavigate();
   const location = useLocation();
   const from = location?.state || "/";
 
-  //  useEffect(() => {
-  //    if (user) {
-  //      navigate("/");
-  //    }
-  //  }, [navigate, user]);
+
 
   const {
     register,
@@ -39,9 +35,16 @@ const Login = () => {
   const onSubmit = async (data) => {
     const { email, password } = data;
     try {
-      await signIn(email, password);
-      toast.success("Login Successful");
-      navigate(from);
+    const result =  await signIn(email, password);
+
+      if (result?.user) {
+        toast.success("Successfully logged in!");
+        setTimeout(() => {
+          navigate(from);
+          window.location.reload();
+        }, 2000);
+      }
+
     } catch (error) {
       toast.error(
         error?.message?.split("(")[1].replace(")", "").split("/")[1] ||
@@ -52,15 +55,26 @@ const Login = () => {
 
   const handleSocialLogin = async () => {
     try {
-      await googleLogin();
-      toast.success("SignIn with Google Successful");
-      navigate(from);
+     const result = await googleLogin();
+
+     if (result?.user) {
+         toast.success("SignIn with Google Successful");
+       setTimeout(() => {
+         navigate(from);
+         window.location.reload();
+       }, 2000)
+     }
+
+
+      // toast.success("SignIn with Google Successful");
+      // navigate(from);
+
     } catch (error) {
       toast.error(error?.message);
     }
   };
 
-  // if (user || loading) return;
+
 
   return (
     <div className="flex justify-center items-center min-h-[calc(100vh-306px)]">

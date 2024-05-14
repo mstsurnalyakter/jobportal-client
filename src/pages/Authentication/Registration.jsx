@@ -14,11 +14,6 @@ const Register = () => {
   const { createUser, updateUserProfile, googleLogin, user, setUser } =
     useAuth();
 
-  //  useEffect(() => {
-  //    if (user) {
-  //      navigate("/");
-  //    }
-  //  }, [navigate, user]);
 
   // navigate user
   const navigate = useNavigate();
@@ -56,11 +51,17 @@ const Register = () => {
     console.log(name, email, photo, password);
 
     try {
-      await createUser(email, password);
+     const result = await createUser(email, password);
       await updateUserProfile(name, photo);
       setUser({ ...user, photoURL: photo, displayName: name });
-      toast.success("Register Successful");
-      navigate(from);
+       if (result?.user) {
+         toast.success("Successfully Register!");
+
+         setTimeout(() => {
+           navigate(from);
+           window.location.reload();
+         }, 2000);
+       }
     } catch (error) {
       toast.error(
         error?.message?.split("(")[1].replace(")", "").split("/")[1] ||
@@ -71,15 +72,20 @@ const Register = () => {
 
   const handleSocialLogin = async () => {
     try {
-      await googleLogin();
-      toast.success("SignIn with Google Successful");
-      navigate(from);
+    const result =  await googleLogin();
+    if (result?.user) {
+     toast.success("SignIn with Google Successful");
+      setTimeout(() => {
+        navigate(from);
+        window.location.reload();
+      }, 2000);
+    }
     } catch (error) {
       toast.error(error?.message);
     }
   };
 
-  // if (user || loading) return;
+
 
   return (
     <div className="flex justify-center items-center min-h-[calc(100vh-306px)]">

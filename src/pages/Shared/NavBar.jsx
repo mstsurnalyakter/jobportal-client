@@ -94,6 +94,7 @@ function ProfileMenu() {
 
 
 function NavList() {
+  const { user } = useAuth();
   return (
     <List className="mt-4 items-center mb-6 gap-4 lg:gap-2 p-0 lg:mt-0 lg:mb-0 lg:flex-row lg:p-1">
       <NavLink
@@ -118,7 +119,7 @@ function NavList() {
         All Jobs
       </NavLink>
 
-      <NavLink
+    { user &&  <NavLink
         to={"/add-job"}
         className={({ isActive }) =>
           isActive
@@ -127,9 +128,9 @@ function NavList() {
         }
       >
         Add A Job
-      </NavLink>
+      </NavLink>}
 
-      <NavLink
+     {user && <NavLink
         to={"/my-jobs"}
         className={({ isActive }) =>
           isActive
@@ -138,7 +139,7 @@ function NavList() {
         }
       >
         My Jobs
-      </NavLink>
+      </NavLink>}
       <NavLink
         to={"/blogs"}
         className={({ isActive }) =>
@@ -149,7 +150,7 @@ function NavList() {
       >
         Blogs
       </NavLink>
-      <NavLink
+      {user && <NavLink
         to={"/applied-jobs"}
         className={({ isActive }) =>
           isActive
@@ -158,7 +159,7 @@ function NavList() {
         }
       >
         Applied Jobs
-      </NavLink>
+      </NavLink>}
     </List>
   );
 }
