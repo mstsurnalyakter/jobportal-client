@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 // import { useNavigate } from "react-router-dom";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Spinner from "../../components/Spinner";
 import DynamicTitle from "../../components/DynamicTitle";
@@ -17,6 +17,7 @@ const UpdateJob = () => {
   const { user } = useAuth();
   const { id } = useParams();
   const axiosSecure = useAxiosSecure();
+  const navigate = useNavigate()
 
 
   const {
@@ -79,7 +80,7 @@ const UpdateJob = () => {
             if (data.modifiedCount > 0) {
              toast.success("Successful job update");
               refetch();
-            // navigate("/my-posted-job");
+            navigate("/my-jobs");
       }
             console.log(data);
             return data;
@@ -138,7 +139,7 @@ const UpdateJob = () => {
   return (
     <div className=" border border-[#FF4153]">
       <DynamicTitle pageTitle="Update Job" />
-      <div className="shadow-lg  p-5 dark:text-gray-100  dark:bg-[#1a2641d5]">
+      <div className="shadow-lg  p-5 dark:text-gray-500  dark:bg-[#1a2641d5]">
         {/* Heading */}
         <div className="mt-5 mb-8">
           <p className="flex items-center justify-center text-3xl font-semibold bg-gradient-to-r from-[#e58891] via-purple-400 to-[#FF4153] bg-300% text-transparent bg-clip-text animate-gradient">

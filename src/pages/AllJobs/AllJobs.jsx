@@ -87,7 +87,7 @@ const AllJobs = () => {
 
   return (
     <div>
-      <DynamicTitle pageTitle="All Job" />
+      <DynamicTitle pageTitle="All Jobs" />
       <header>
         <div
           className="w-full   object-cover bg-cover h-[140px]"
