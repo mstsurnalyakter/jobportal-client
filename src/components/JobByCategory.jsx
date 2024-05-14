@@ -4,14 +4,30 @@ import "react-tabs/style/react-tabs.css";
 import useJobs from '../hooks/useJobs';
 import JobCard from "./JobCard";
 import Spinner from "./Spinner";
+import useAuth from "../hooks/useAuth";
+import { useNavigate } from "react-router";
+import toast from "react-hot-toast";
+// import toast from "react-hot-toast";
 
 const JobByCategory = () => {
+  const { user } = useAuth();
+  const navigate = useNavigate();
+
   const {data,isLoading,refetch} = useJobs();
   if (isLoading) {
     return <div className="flex items-center justify-center mt-10">
       <Spinner/>
     </div>
   }
+
+    const handleUser = () => {
+      if (!user) {
+        toast.error("You have to log in first to view details");
+        navigate("/login");
+        return;
+      }
+    };
+
 
   return (
     <>
@@ -44,7 +60,9 @@ const JobByCategory = () => {
               {data?.length > 0 &&
                 data
                   ?.filter((j) => j.jobCategory === "On Site")
-                  .map((job) => <JobCard key={job?._id} job={job} />)}
+                  .map((job) => (
+                    <JobCard key={job?._id} job={job} handleUser={handleUser} />
+                  ))}
             </div>
           </TabPanel>
           <TabPanel>
@@ -52,7 +70,9 @@ const JobByCategory = () => {
               {data?.length > 0 &&
                 data
                   ?.filter((j) => j.jobCategory === "Remote")
-                  .map((job) => <JobCard key={job?._id} job={job} />)}
+                  .map((job) => (
+                    <JobCard key={job?._id} job={job} handleUser={handleUser} />
+                  ))}
             </div>
           </TabPanel>
           <TabPanel>
@@ -60,7 +80,9 @@ const JobByCategory = () => {
               {data?.length > 0 &&
                 data
                   ?.filter((j) => j.jobCategory === "Part-Time")
-                  .map((job) => <JobCard key={job?._id} job={job} />)}
+                  .map((job) => (
+                    <JobCard key={job?._id} job={job} handleUser={handleUser} />
+                  ))}
             </div>
           </TabPanel>
           <TabPanel>
@@ -68,13 +90,17 @@ const JobByCategory = () => {
               {data?.length > 0 &&
                 data
                   ?.filter((j) => j.jobCategory === "Hybrid")
-                  .map((job) => <JobCard key={job?._id} job={job} />)}
+                  .map((job) => (
+                    <JobCard key={job?._id} job={job} handleUser={handleUser} />
+                  ))}
             </div>
           </TabPanel>
           <TabPanel>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 ">
               {data?.length > 0 &&
-                data.map((job) => <JobCard key={job?._id} job={job} />)}
+                data.map((job) => (
+                  <JobCard key={job?._id} job={job} handleUser={handleUser} />
+                ))}
             </div>
           </TabPanel>
         </div>

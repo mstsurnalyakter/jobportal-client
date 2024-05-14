@@ -17,6 +17,8 @@ const Login = () => {
   const location = useLocation();
   const from = location?.state || "/";
 
+ 
+
 
 
   const {
@@ -65,10 +67,6 @@ const Login = () => {
          window.location.reload();
        }, 2000)
      }
-
-
-      // toast.success("SignIn with Google Successful");
-      // navigate(from);
 
     } catch (error) {
       toast.error(error?.message);
