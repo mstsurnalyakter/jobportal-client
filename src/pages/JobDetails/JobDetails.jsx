@@ -1,4 +1,4 @@
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
@@ -14,6 +14,7 @@ const JobDetails = () => {
   const { id } = useParams();
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
+  const navigate = useNavigate();
 
   const [resumeLink, setResumeLink] = useState("");
 
@@ -39,7 +40,7 @@ const url2 = "https://jobportal-server-ochre.vercel.app/apply-job";
         if (data.insertedId) {
           toast.success("Application submitted successfully!");
           refetch()
-          // navigate("/");
+          navigate("/applied-jobs");
 
         }
       } catch (error) {
@@ -92,15 +93,17 @@ const url2 = "https://jobportal-server-ochre.vercel.app/apply-job";
     const isDeadlinePassed = new Date(data?.deadline) < new Date();
     const isEmployer = data?.user?.email === user?.email;
 
+    if (isEmployer) {
+      return toast.error("You are the employer of this job.");
+    }
+
     if (isDeadlinePassed) {
       return toast.error(
         "The deadline for this job has passed. You cannot apply."
       );
     }
 
-    if (isEmployer) {
-      return toast.error("You are the employer of this job.");
-    }
+
 
     Swal.fire({
       title: "Submit your Resume Link",
@@ -172,10 +175,10 @@ const url2 = "https://jobportal-server-ochre.vercel.app/apply-job";
         <h2 className="text-4xl font-medium">{jobTitle}</h2>
         <div className="flex gap-3">
           <p>
-            <b>Name:</b> {user?.name}
+            <b>Employer Name:</b> {user1?.name}
           </p>
           <p>
-            <b>Email:</b> {user?.email}
+            <b>Employer Email:</b> {user1?.email}
           </p>
         </div>
         <p>

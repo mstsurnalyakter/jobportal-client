@@ -40,7 +40,7 @@ const UpdateProfile = () => {
 
   return (
     <div className=" border border-[#FF4153]">
-      <DynamicTitle pageTitle="Update Job" />
+      <DynamicTitle pageTitle="Update Profile" />
       <div className="shadow-lg  p-5  dark:bg-[#1a2641d5] dark:text-gray-100">
         {/* Heading */}
         <div className="mt-5 mb-8">

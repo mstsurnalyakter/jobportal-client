@@ -11,9 +11,7 @@ const Blogs = () => {
       <section className="">
         <DynamicTitle pageTitle="Blogs" />
         <div className="p-6 mx-auto space-y-6 sm:space-y-12">
-          <a
-            rel="noopener noreferrer"
-            href="#"
+          <div
             className="block max-w-sm border-2 shadow gap-3 mx-auto sm:max-w-full group hover:no-underline focus:no-underline lg:grid lg:grid-cols-12 dark:bg-gray-50"
           >
             <img
@@ -22,7 +20,7 @@ const Blogs = () => {
               className="object-cover w-full h-64 rounded sm:h-96 lg:col-span-7 dark:bg-gray-500"
             />
             <div className="p-6 space-y-2 lg:col-span-5">
-              <h3 className="text-2xl font-semibold  group-hover:underline group-focus:underline">
+              <h3 className="text-2xl font-semibold ">
                 Understanding Access Tokens and Refresh Tokens: A Guide for
                 Developers
               </h3>
@@ -41,12 +39,10 @@ const Blogs = () => {
                 </button>
               </Link>
             </div>
-          </a>
+          </div>
 
           <div className="grid justify-center grid-cols-1 gap-6  lg:grid-cols-2">
-            <a
-              rel="noopener noreferrer"
-              href="#"
+            <div
               className="mx-auto group hover:no-underline focus:no-underline dark:bg-gray-50 border-2 shadow"
             >
               <img
@@ -55,7 +51,7 @@ const Blogs = () => {
                 src={frameworks}
               />
               <div className="p-6 space-y-2">
-                <h3 className="text-2xl font-semibold group-hover:underline group-focus:underline">
+                <h3 className="text-2xl font-semibold">
                   Comparing Express.js and Nest.js: Choosing the Right Node.js
                   Framework for Your Project
                 </h3>
@@ -74,11 +70,9 @@ const Blogs = () => {
                   </button>
                 </Link>
               </div>
-            </a>
+            </div>
 
-            <a
-              rel="noopener noreferrer"
-              href="#"
+            <div
               className="mx-auto group hover:no-underline focus:no-underline dark:bg-gray-50 border-2 shadow"
             >
               <img
@@ -89,7 +83,7 @@ const Blogs = () => {
               <div className="p-6 space-y-2
               flex flex-col">
                 <div className="flex-grow">
-                  <h3 className="text-2xl font-semibold group-hover:underline group-focus:underline">
+                  <h3 className="text-2xl font-semibold">
                     Job Portal Project Code Explanation
                   </h3>
                   <span className="text-xs dark:text-gray-600">
@@ -115,7 +109,7 @@ const Blogs = () => {
                   </button>
                 </Link>
               </div>
-            </a>
+            </div>
           </div>
         </div>
       </section>
