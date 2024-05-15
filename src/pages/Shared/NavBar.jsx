@@ -221,7 +221,7 @@ const NavBar = () => {
                     Logout
                   </button>
                   <img
-                    className="rounded-full w-10 h-10"
+                    className="rounded-full w-10 h-10 border-2 border-[#d53b4b]"
                     src={user?.photoURL}
                     alt="profile image"
                     id="profile"
@@ -278,7 +278,7 @@ const NavBar = () => {
               </button>
               <img
                 id="profile"
-                className="rounded-full w-10 h-10"
+                className="rounded-full w-10 h-10 border-2 border-[#d53b4b]"
                 src={user?.photoURL}
                 alt="profile image"
               />

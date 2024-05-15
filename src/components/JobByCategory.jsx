@@ -5,13 +5,13 @@ import useJobs from '../hooks/useJobs';
 import JobCard from "./JobCard";
 import Spinner from "./Spinner";
 import useAuth from "../hooks/useAuth";
-import { useNavigate } from "react-router";
+import { Navigate } from "react-router";
 import toast from "react-hot-toast";
-// import toast from "react-hot-toast";
+
 
 const JobByCategory = () => {
   const { user } = useAuth();
-  const navigate = useNavigate();
+
 
   const {data,isLoading,refetch} = useJobs();
   if (isLoading) {
@@ -23,6 +23,7 @@ const JobByCategory = () => {
     const handleUser = () => {
       if (!user) {
         toast.error("You have to log in first to view details");
+        <Navigate to={"/login"} state={location?.pathname || "/"} />;
       }
     };
 
