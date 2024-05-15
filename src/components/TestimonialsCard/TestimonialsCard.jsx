@@ -28,7 +28,7 @@ const TestimonialsCard = () => {
           delay: 3000,
         }}
         modules={[EffectCards, Autoplay]}
-        className="w-[500px] shadow"
+        className="w-full shadow"
       >
         <SwiperSlide className="bg-white border-2 border-red-500">
           <Card1 />
