@@ -9,10 +9,11 @@ import toast from "react-hot-toast";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import DynamicTitle from "../../components/DynamicTitle";
+import { useNavigate } from "react-router-dom";
 
 
 const AddJob = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const { user } = useAuth();
 
@@ -36,7 +37,7 @@ const AddJob = () => {
 
         if (data.insertedId) {
           toast.success("Post Job successfully");
-          // navigate("/");
+          navigate("/my-jobs");
         }
         return data
       } catch (error) {
