@@ -236,12 +236,12 @@ const NavBar = () => {
           </div>
           <div className="flex flex-col sm:flex-row gap-4">
             {/* Theme Toggle Buttons */}
-            <div className=" bg-[#FF4153]  rounded">
+            <div className=" bg-[#FF4153] items-center justify-center flex flex-wrap rounded">
               {options?.map((opt) => (
                 <button
                   onClick={() => setTheme(opt.text)}
                   key={opt.text}
-                  className={`w-8 h-8 leading-9 text-xl rounded-full m-1 ${
+                  className={`w-8 h-8 leading-9 text-xl rounded-full mr-1 ${
                     theme === opt.text ? "text-blue-600" : ""
                   }`}
                 >
