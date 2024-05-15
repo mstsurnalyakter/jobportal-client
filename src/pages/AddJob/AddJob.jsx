@@ -54,7 +54,6 @@ const AddJob = () => {
       maxSalary,
       jobCategory,
       jobDescription,
-      jobApplicantsNumber,
     } = data;
     const postingDate = startDate1;
     const deadline = startDate2;
@@ -68,7 +67,7 @@ const AddJob = () => {
       postingDate,
       deadline,
       jobDescription,
-      jobApplicantsNumber,
+      jobApplicantsNumber:0,
       user: {
         email: user?.email,
         name: user?.displayName,
@@ -164,7 +163,6 @@ const AddJob = () => {
                   <option value="On Site">On Site</option>
                   <option value="Remote">Remote</option>
                   <option value="Part-Time">Part-Time</option>
-                  <option value="Glass Painting">Glass Painting</option>
                   <option value="Hybrid">Hybrid</option>
                 </select>
               </div>
@@ -230,8 +228,7 @@ const AddJob = () => {
                   className="w-full dark:text-white p-2 border-2 rounded-md focus:outline-[#FF4153]"
                   type="text"
                   name="jobApplicantsNumber"
-                  defaultValue={0}
-                  {...register("jobDescription")}
+                  placeholder="0"
                   id="jobApplicantsNumber"
                   disabled
                 />
