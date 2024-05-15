@@ -8,9 +8,9 @@ import DynamicTitle from "../../components/DynamicTitle";
 const Blogs = () => {
   return (
     <div>
-      <section className="dark:bg-gray-100 dark:text-gray-800">
+      <section className="">
         <DynamicTitle pageTitle="Blogs" />
-        <div className="container max-w-6xl p-6 mx-auto space-y-6 sm:space-y-12">
+        <div className="p-6 mx-auto space-y-6 sm:space-y-12">
           <a
             rel="noopener noreferrer"
             href="#"
@@ -83,26 +83,31 @@ const Blogs = () => {
             >
               <img
                 role="presentation"
-                className="object-cover w-full rounded h-44 dark:bg-gray-500"
+                className="object-cover w-full rounded  dark:bg-gray-500"
                 src={code}
               />
-              <div className="p-6 space-y-2">
-                <h3 className="text-2xl font-semibold group-hover:underline group-focus:underline">
-                  Job Portal Project Code Explanation
-                </h3>
-                <span className="text-xs dark:text-gray-600">May 14, 2024</span>
-                <p>
-                  Welcome to the behind-the-scenes journey of creating "Job
-                  Portal," a feature-rich platform designed to revolutionize the
-                  job-seeking experience. In this blog, we'll unravel the
-                  intricate details of how this dynamic website was crafted
-                  using the MERN stack (MongoDB, Express.js, React, and
-                  Node.js). From setting up the development environment to
-                  implementing advanced features like authentication, job
-                  listings management, and application handling, we'll explore
-                  every aspect of the codebase to provide a comprehensive
-                  understanding of the project............
-                </p>
+              <div className="p-6 space-y-2
+              flex flex-col">
+                <div className="flex-grow">
+                  <h3 className="text-2xl font-semibold group-hover:underline group-focus:underline">
+                    Job Portal Project Code Explanation
+                  </h3>
+                  <span className="text-xs dark:text-gray-600">
+                    May 14, 2024
+                  </span>
+                  <p>
+                    Welcome to the behind-the-scenes journey of creating "Job
+                    Portal," a feature-rich platform designed to revolutionize
+                    the job-seeking experience. In this blog, we'll unravel the
+                    intricate details of how this dynamic website was crafted
+                    using the MERN stack (MongoDB, Express.js, React, and
+                    Node.js). From setting up the development environment to
+                    implementing advanced features like authentication, job
+                    listings management, and application handling, we'll explore
+                    every aspect of the codebase to provide a comprehensive
+                    understanding of the project............
+                  </p>
+                </div>
                 <Link className="" to={"/code-explain"}>
                   <button className="bg-[#FF4153] px-3 flex items-center mt-4 gap-2 py-2 rounded-md text-white">
                     <span>Read More</span>
@@ -111,7 +116,6 @@ const Blogs = () => {
                 </Link>
               </div>
             </a>
-
           </div>
         </div>
       </section>
