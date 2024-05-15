@@ -1,5 +1,6 @@
 import  { useEffect, useState } from "react";
 import logo from "/logo.png";
+import { Tooltip } from "react-tooltip";
 
 
 import {
@@ -220,10 +221,14 @@ const NavBar = () => {
                     Logout
                   </button>
                   <img
-                    title={user?.displayName}
                     className="rounded-full w-10 h-10"
                     src={user?.photoURL}
-                    alt=""
+                    alt="profile image"
+                    id="profile"
+                  />
+                  <Tooltip
+                    anchorSelect="#profile"
+                    content={user?.displayName}
                   />
                 </div>
               )}
@@ -272,11 +277,12 @@ const NavBar = () => {
                 Logout
               </button>
               <img
-                title={user?.displayName}
+                id="profile"
                 className="rounded-full w-10 h-10"
                 src={user?.photoURL}
-                alt=""
+                alt="profile image"
               />
+              <Tooltip anchorSelect="#profile" content={user?.displayName} />
             </div>
           )}
 
