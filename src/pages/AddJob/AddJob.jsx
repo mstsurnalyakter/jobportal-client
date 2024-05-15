@@ -5,7 +5,6 @@ import { useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-// import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import DynamicTitle from "../../components/DynamicTitle";
