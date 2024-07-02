@@ -59,9 +59,10 @@ Create a .env file in the client directory with the following environment variab
   VITE_MESSAGINGSENDERID=
   VITE_APPID=
   VITE_API_URL=
+  ```
 
 ### Run the client:
 
-     ```sh
+ ```sh
     npm run dev
-    ```
+```
