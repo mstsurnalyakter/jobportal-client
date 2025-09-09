@@ -26,7 +26,7 @@ function NavList() {
         to={"/"}
         className={({ isActive }) =>
           isActive
-            ? "bg-[#FF4153] px-3 py-1  text-white  rounded-lg"
+            ? "bg-[#00a26e] px-3 py-1  text-white  rounded-lg"
             : "p-2 text-[#131313CC]"
         }
       >
@@ -37,7 +37,7 @@ function NavList() {
         to={"/all-jobs"}
         className={({ isActive }) =>
           isActive
-            ? "bg-[#FF4153] px-3 py-1  text-white  rounded-lg"
+            ? "bg-[#00a26e] px-3 py-1  text-white  rounded-lg"
             : "p-2 text-[#131313CC]"
         }
       >
@@ -49,7 +49,7 @@ function NavList() {
           to={"/add-job"}
           className={({ isActive }) =>
             isActive
-              ? "bg-[#FF4153] px-3 py-1  text-white  rounded-lg"
+              ? "bg-[#00a26e] px-3 py-1  text-white  rounded-lg"
               : "p-2 text-[#131313CC]"
           }
         >
@@ -62,7 +62,7 @@ function NavList() {
           to={"/my-jobs"}
           className={({ isActive }) =>
             isActive
-              ? "bg-[#FF4153] px-3 py-1  text-white  rounded-lg"
+              ? "bg-[#00a26e] px-3 py-1  text-white  rounded-lg"
               : "p-2 text-[#131313CC]"
           }
         >
@@ -73,7 +73,7 @@ function NavList() {
         to={"/blogs"}
         className={({ isActive }) =>
           isActive
-            ? "bg-[#FF4153] px-3 py-1  text-white  rounded-lg"
+            ? "bg-[#00a26e] px-3 py-1  text-white  rounded-lg"
             : "p-2 text-[#131313CC]"
         }
       >
@@ -84,7 +84,7 @@ function NavList() {
           to={"/applied-jobs"}
           className={({ isActive }) =>
             isActive
-              ? "bg-[#FF4153] px-3 py-1 flex items-center justify-center  text-white  rounded-lg"
+              ? "bg-[#00a26e] px-3 py-1 flex items-center justify-center  text-white  rounded-lg"
               : "p-2 text-[#131313CC]"
           }
         >
@@ -96,7 +96,7 @@ function NavList() {
           to={"/profile"}
           className={({ isActive }) =>
             isActive
-              ? "bg-[#FF4153] px-3 py-1 flex items-center justify-center  text-white  rounded-lg"
+              ? "bg-[#00a26e] px-3 py-1 flex items-center justify-center  text-white  rounded-lg"
               : "p-2 text-[#131313CC]"
           }
         >
@@ -204,8 +204,8 @@ const NavBar = () => {
                     to={"/login"}
                     className={({ isActive }) =>
                       isActive
-                        ? "bg-[#FF4153] px-3 py-1 flex items-center justify-center  text-white  rounded-lg"
-                        : "text-[#131313CC] border border-[#FF4153] px-3 py-1 rounded-lg"
+                        ? "bg-[#00a26e] px-3 py-1 flex items-center justify-center  text-white  rounded-lg"
+                        : "text-[#131313CC] border border-[#00a26e] px-3 py-1 rounded-lg"
                     }
                   >
                     Login
@@ -236,7 +236,7 @@ const NavBar = () => {
           </div>
           <div className="flex flex-col sm:flex-row gap-4">
             {/* Theme Toggle Buttons */}
-            <div className=" bg-[#FF4153] items-center justify-center flex flex-wrap rounded">
+            <div className=" bg-[#00a26e] items-center justify-center flex flex-wrap rounded">
               {options?.map((opt) => (
                 <button
                   onClick={() => setTheme(opt.text)}
@@ -294,8 +294,8 @@ const NavBar = () => {
                   to={"/login"}
                   className={({ isActive }) =>
                     isActive
-                      ? "bg-[#FF4153] px-3 py-1 flex items-center mx-auto justify-center  text-white  rounded-lg"
-                      : "text-[#131313CC] border flex items-center mx-auto justify-center border-[#FF4153] px-3 py-1 rounded-lg"
+                      ? "bg-[#00a26e] px-3 py-1 flex items-center mx-auto justify-center  text-white  rounded-lg"
+                      : "text-[#131313CC] border flex items-center mx-auto justify-center border-[#00a26e] px-3 py-1 rounded-lg"
                   }
                 >
                   Login

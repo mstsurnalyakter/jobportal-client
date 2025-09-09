@@ -202,7 +202,7 @@ const url2 = "https://jobportal-server-ochre.vercel.app/apply-job";
         </p>
         <button
           onClick={openApplicationModal}
-          className="px-4 w-full py-2 mt-4 rounded  bg-gradient-to-r from-[#FF4153] via-purple-600 to-[#FF4153] bg-300% text-transparent animate-gradient
+          className="px-4 w-full py-2 mt-4 rounded  bg-gradient-to-r from-[#00a26e] via-purple-600 to-[#00a26e] bg-300% text-transparent animate-gradient
               duration-200 text-white cursor-pointer font-semibold"
         >
           Apply

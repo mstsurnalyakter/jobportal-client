@@ -7,7 +7,7 @@ const CustomInput = ({ placeholder, type, name, label, id, defaultValue }) => {
         {label || placeholder}
       </label>
       <input
-        className="w-full p-2 border-2 rounded-md focus:outline-[#0af090]"
+        className="w-full p-2 border-2 rounded-md focus:outline-[#00a26e]"
         type={type}
         name={name}
         defaultValue={defaultValue ? defaultValue : ""}

@@ -29,7 +29,7 @@ const JobProcess = () => {
   return (
     <div>
       <h2 className="text-center py-5 font-bold text-4xl mx-9">
-        Our Job <span className="text-[#0af090]">Process</span>
+        Our Job <span className="text-[#00a26e]">Process</span>
       </h2>
       <div className="grid gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
         {data?.map((cardData) => (
@@ -56,13 +56,13 @@ const JobProcess = () => {
                 <Typography
                   variant="h5"
                   color="blue-gray"
-                  className="mb-2 text-[#0af090]"
+                  className="mb-2 text-[#00a26e]"
                 >
                   {cardData.title}
                 </Typography>
                 <Typography variant="small">{cardData.description}</Typography>
                 <Link className="" to={"/all-jobs"}>
-                  <button className="bg-[#0af090] px-3 flex items-center gap-2 py-2 rounded-md text-white">
+                  <button className="bg-[#00a26e] px-3 flex items-center gap-2 py-2 rounded-md text-white">
                     <span>Apply Job</span>
                     <ion-icon name="arrow-forward-outline"></ion-icon>
                   </button>

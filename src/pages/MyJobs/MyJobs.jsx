@@ -107,7 +107,7 @@ const handleDelete = async (id) => {
               <col />
             </colgroup>
             <thead className="dark:bg-gray-300">
-              <tr className="text-left border-b border-[#FF4153] border-opacity-20 text-[#FF4153] ">
+              <tr className="text-left border-b border-[#00a26e] border-opacity-20 text-[#00a26e] ">
                 <th className="p-3"></th>
                 <th className="p-3">Title</th>
                 <th className="p-3">Job Category</th>

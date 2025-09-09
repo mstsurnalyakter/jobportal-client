@@ -13,7 +13,7 @@ const ErrorPage = () => {
             <img src={error} className="w-[500px] -mt-16" alt="" />
             <Link
               to={"/"}
-              className="px-4 py-3 text-xl font-semibold text-center text-white transition duration-300 rounded-lg hover:from-purple-600 hover:to-[#FF4153] ease bg-gradient-to-br from-[#FF4153] to-purple-700 md:w-auto"
+              className="px-4 py-3 text-xl font-semibold text-center text-white transition duration-300 rounded-lg hover:from-purple-600 hover:to-[#00a26e] ease bg-gradient-to-br from-[#00a26e] to-purple-700 md:w-auto"
             >
               Back to Home Page
             </Link>

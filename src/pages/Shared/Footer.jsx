@@ -19,7 +19,7 @@ const Footer = () => {
             <div className="self-center flex items-center text-lg md:text-2xl font-semibold">
               <img className="w-10" src={logo2} alt="" />
               <h2>
-                Job <span className="text-[#FF4153]">Portal</span>
+                Job <span className="text-[#00a26e]">Portal</span>
               </h2>
             </div>
           </div>
@@ -197,7 +197,7 @@ const Footer = () => {
       <div className="py-6 text-sm text-center dark:text-gray-600">
         <p className="text-[#e8ded4]">
           Copyright © {new Date().getFullYear()} - All right reserved by Job{" "}
-          <span className="text-[#FF4153]">Portal</span>
+          <span className="text-[#00a26e]">Portal</span>
         </p>
       </div>
     </footer>

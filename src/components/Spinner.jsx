@@ -5,10 +5,10 @@ const Spinner = () => {
     <CirclesWithBar
       height="200"
       width="200"
-      color="#0af090"
-      outerCircleColor="#0af090"
-      innerCircleColor="#0af090"
-      barColor="#0af090"
+      color="#00a26e"
+      outerCircleColor="#00a26e"
+      innerCircleColor="#00a26e"
+      barColor="#00a26e"
       ariaLabel="circles-with-bar-loading"
       wrapperClass=""
       visible={true}

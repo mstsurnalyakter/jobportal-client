@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import token from "/Access_vs_refresh_token_blog_thumbnail.webp"
+
 import frameworks from "/Nest.js-vs.-Express.webp"
 import code from '/code.jfif'
 import { Typography } from "@material-tailwind/react";
@@ -15,7 +15,7 @@ const Blogs = () => {
             className="block max-w-sm border-2 shadow gap-3 mx-auto sm:max-w-full group hover:no-underline focus:no-underline lg:grid lg:grid-cols-12 dark:bg-gray-50"
           >
             <img
-              src={token}
+              src={"/public/Access_vs_refresh_token_blog_thumbnail.webp"}
               alt=""
               className="object-cover w-full h-64 rounded sm:h-96 lg:col-span-7 dark:bg-gray-500"
             />
@@ -33,7 +33,7 @@ const Blogs = () => {
                 resources on behalf of users......
               </p>
               <Link className="" to={"/token-blog"}>
-                <button className="bg-[#FF4153] px-3 flex items-center mt-4 gap-2 py-2 rounded-md text-white">
+                <button className="bg-[#00a26e] px-3 flex items-center mt-4 gap-2 py-2 rounded-md text-white">
                   <span>Read More</span>
                   <ion-icon name="arrow-forward-outline"></ion-icon>
                 </button>
@@ -64,7 +64,7 @@ const Blogs = () => {
                   cater to different needs and preferences.....
                 </Typography>
                 <Link className="" to={"/frameworks-blog"}>
-                  <button className="bg-[#FF4153] px-3 flex items-center mt-4 gap-2 py-2 rounded-md text-white">
+                  <button className="bg-[#00a26e] px-3 flex items-center mt-4 gap-2 py-2 rounded-md text-white">
                     <span>Read More</span>
                     <ion-icon name="arrow-forward-outline"></ion-icon>
                   </button>
@@ -103,7 +103,7 @@ const Blogs = () => {
                   </p>
                 </div>
                 <Link className="" to={"/code-explain"}>
-                  <button className="bg-[#FF4153] px-3 flex items-center mt-4 gap-2 py-2 rounded-md text-white">
+                  <button className="bg-[#00a26e] px-3 flex items-center mt-4 gap-2 py-2 rounded-md text-white">
                     <span>Read More</span>
                     <ion-icon name="arrow-forward-outline"></ion-icon>
                   </button>

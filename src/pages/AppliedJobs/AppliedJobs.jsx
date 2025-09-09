@@ -62,7 +62,7 @@ const AppliedJobs = () => {
 
 
       <button
-        className="bg-[#FF4153] px-3 py-1  text-white  rounded-lg flex items-center gap-4"
+        className="bg-[#00a26e] px-3 py-1  text-white  rounded-lg flex items-center gap-4"
         onClick={() => generatePDF(targetRef, { filename: "page.pdf" })}
       >
         Download<LuDownload />
@@ -118,7 +118,7 @@ const AppliedJobs = () => {
               <col />
             </colgroup>
             <thead className="dark:bg-gray-300">
-              <tr className="text-left border-b border-[#FF4153] border-opacity-20 text-[#FF4153] ">
+              <tr className="text-left border-b border-[#00a26e] border-opacity-20 text-[#00a26e] ">
                 <th className="p-3"></th>
                 <th className="p-3">Title</th>
                 <th className="p-3">Job Category</th>

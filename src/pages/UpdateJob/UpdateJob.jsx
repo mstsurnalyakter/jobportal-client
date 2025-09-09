@@ -137,13 +137,13 @@ const UpdateJob = () => {
 
 
   return (
-    <div className=" border border-[#FF4153]">
+    <div className=" border border-[#00a26e]">
       <DynamicTitle pageTitle="Update Job" />
       <div className="shadow-lg  p-5 dark:text-gray-500  dark:bg-[#1a2641d5]">
         {/* Heading */}
         <div className="mt-5 mb-8">
-          <p className="flex items-center justify-center text-3xl font-semibold bg-gradient-to-r from-[#e58891] via-purple-400 to-[#FF4153] bg-300% text-transparent bg-clip-text animate-gradient">
-            <span className="mr-3 text-[#FF4153]">
+          <p className="flex items-center justify-center text-3xl font-semibold bg-gradient-to-r from-[#e58891] via-purple-400 to-[#00a26e] bg-300% text-transparent bg-clip-text animate-gradient">
+            <span className="mr-3 text-[#00a26e]">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -171,7 +171,7 @@ const UpdateJob = () => {
                   Image
                 </label>
                 <input
-                  className="w-full p-2 border-2 rounded-md focus:outline-[#FF4153]"
+                  className="w-full p-2 border-2 rounded-md focus:outline-[#00a26e]"
                   type="url"
                   name="image"
                   id="image"
@@ -186,7 +186,7 @@ const UpdateJob = () => {
                   Job Title
                 </label>
                 <input
-                  className="w-full p-2 border-2 rounded-md focus:outline-[#FF4153]"
+                  className="w-full p-2 border-2 rounded-md focus:outline-[#00a26e]"
                   type="text"
                   placeholder="Job Title"
                   id="jobTitle"
@@ -201,7 +201,7 @@ const UpdateJob = () => {
                   Minimum Salary
                 </label>
                 <input
-                  className="w-full p-2 border-2 rounded-md focus:outline-[#FF4153]"
+                  className="w-full p-2 border-2 rounded-md focus:outline-[#00a26e]"
                   type="number"
                   placeholder="Minimum Salary"
                   id="minSalary"
@@ -217,7 +217,7 @@ const UpdateJob = () => {
                   disabled
                   selected={startDate1}
                   onChange={(date) => setStartDate1(date)}
-                  className="p-2 border-2 rounded-md focus:outline-[#FF4153]  w-full"
+                  className="p-2 border-2 rounded-md focus:outline-[#00a26e]  w-full"
                 />
               </div>
             </div>
@@ -228,7 +228,7 @@ const UpdateJob = () => {
                   Employer Name
                 </label>
                 <input
-                  className="w-full p-2 border-2 rounded-md focus:outline-[#FF4153]"
+                  className="w-full p-2 border-2 rounded-md focus:outline-[#00a26e]"
                   type="text"
                   name="name"
                   defaultValue={user?.displayName}
@@ -242,7 +242,7 @@ const UpdateJob = () => {
                   Employer Email
                 </label>
                 <input
-                  className="w-full p-2 border-2 rounded-md focus:outline-[#FF4153]"
+                  className="w-full p-2 border-2 rounded-md focus:outline-[#00a26e]"
                   type="text"
                   name="email"
                   defaultValue={user?.email}
@@ -256,7 +256,7 @@ const UpdateJob = () => {
                   Maximum Salary
                 </label>
                 <input
-                  className="w-full p-2 border-2 rounded-md focus:outline-[#FF4153]"
+                  className="w-full p-2 border-2 rounded-md focus:outline-[#00a26e]"
                   type="number"
                   defaultValue={maxSalary}
                   placeholder="Maximum Salary"
@@ -272,7 +272,7 @@ const UpdateJob = () => {
                   required
                   selected={startDate2}
                   onChange={(date) => setStartDate2(date)}
-                  className="p-2 border-2 rounded-md focus:outline-[#FF4153]  w-full"
+                  className="p-2 border-2 rounded-md focus:outline-[#00a26e]  w-full"
                 />
               </div>
             </div>
@@ -281,7 +281,7 @@ const UpdateJob = () => {
           <select
             name="jobCategory"
             id="jobCategory"
-            className="w-full dark:text-gray-900 p-2 border-2 rounded-md focus:outline-[#FF4153]"
+            className="w-full dark:text-gray-900 p-2 border-2 rounded-md focus:outline-[#00a26e]"
             type="text"
             placeholder="Select Job Category"
             defaultValue={jobCategory}
@@ -309,7 +309,7 @@ const UpdateJob = () => {
           </div>
 
           <input
-            className="px-4 w-full py-2 mt-4 rounded  bg-gradient-to-r from-[#FF4153] via-purple-600 to-[#FF4153] bg-300% text-transparent animate-gradient
+            className="px-4 w-full py-2 mt-4 rounded  bg-gradient-to-r from-[#00a26e] via-purple-600 to-[#00a26e] bg-300% text-transparent animate-gradient
               duration-200 text-white cursor-pointer font-semibold"
             type="submit"
             value="Save"
