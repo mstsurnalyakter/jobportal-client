@@ -31,7 +31,7 @@ const Banner = () => {
               backgroundImage: `url(${banner1})`,
             }}
           >
-            <div className="bg-gradient-to-r from-[#FF4153] to-[rgba(21, 21, 21, 0.00)] py-6">
+            <div className="bg-gradient-to-r from-[#0af090] to-[rgba(21, 21, 21, 0.00)] py-6">
               <h1 className="md:text-4xl  text-3xl w-5/6 text-center font-extrabold ">
                 Find Your Next Opportunity
               </h1>
@@ -50,7 +50,7 @@ const Banner = () => {
               backgroundImage: `url(${banner2})`,
             }}
           >
-            <div className="bg-gradient-to-r from-[#FF4153] to-[rgba(21, 21, 21, 0.00)] py-6">
+            <div className="bg-gradient-to-r from-[#0af090] to-[rgba(21, 21, 21, 0.00)] py-6">
               <h1 className="md:text-4xl  text-3xl w-5/6 text-center font-extrabold">
                 Advance Your Career
               </h1>
@@ -69,7 +69,7 @@ const Banner = () => {
               backgroundImage: `url(${banner3})`,
             }}
           >
-            <div className="bg-gradient-to-r from-[#FF4153] to-[rgba(21, 21, 21, 0.00)] py-6">
+            <div className="bg-gradient-to-r from-[#0af090] to-[rgba(21, 21, 21, 0.00)] py-6">
               <h1 className="md:text-4xl  text-3xl w-5/6 text-center font-extrabold">
                 Discover Your Dream Job
               </h1>
@@ -88,7 +88,7 @@ const Banner = () => {
               backgroundImage: `url(${banner4})`,
             }}
           >
-            <div className="bg-gradient-to-r from-[#FF4153] to-[rgba(21, 21, 21, 0.00)] py-6">
+            <div className="bg-gradient-to-r from-[#0af090] to-[rgba(21, 21, 21, 0.00)] py-6">
               <h1 className="md:text-4xl  text-3xl w-5/6 text-center font-extrabold">
                 Join a Thriving Community
               </h1>
@@ -107,7 +107,7 @@ const Banner = () => {
               backgroundImage: `url(${banner5})`,
             }}
           >
-            <div className="bg-gradient-to-r from-[#FF4153] to-[rgba(21, 21, 21, 0.00)] py-6">
+            <div className="bg-gradient-to-r from-[#0af090] to-[rgba(21, 21, 21, 0.00)] py-6">
               <h1 className="md:text-4xl  text-3xl w-5/6 text-center font-extrabold">
                 Empower Your Future
               </h1>
