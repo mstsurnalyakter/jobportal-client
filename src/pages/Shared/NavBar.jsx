@@ -216,7 +216,7 @@ const NavBar = () => {
                 <div className="flex items-center justify-center gap-3">
                   <button
                     onClick={() => handleLogOut()}
-                    className="bg-[#d53b4b] px-3 py-1 flex items-center justify-center  text-white  rounded-lg"
+                    className="bg-[#00a26e] px-3 py-1 flex items-center justify-center  text-white  rounded-lg"
                   >
                     Logout
                   </button>
@@ -272,13 +272,13 @@ const NavBar = () => {
             <div className="flex items-center justify-center gap-3">
               <button
                 onClick={() => handleLogOut()}
-                className="bg-[#d53b4b] px-3 py-1 flex items-center justify-center  text-white  rounded-lg"
+                className="bg-[#00a26e] px-3 py-1 flex items-center justify-center  text-white  rounded-lg"
               >
                 Logout
               </button>
               <img
                 id="profile"
-                className="rounded-full w-10 h-10 border-2 border-[#d53b4b]"
+                className="rounded-full w-10 h-10 border-2 border-[#00a26e]"
                 src={user?.photoURL}
                 alt="profile image"
               />

@@ -30,7 +30,7 @@ const SocialLogin = ({ text }) => {
         </button>
         <button
           onClick={() => handleSocialLogin(githubLogin)}
-          className="btn text-lg text-white bg-[#c04ddd] hover:bg-[#c04ddd]"
+          className="btn text-lg text-white bg-[#00a26e] hover:bg-[#00a26e]"
         >
           <FaGithub className="text-[bg-[#77228C]]" />
           Sign in with GitHub

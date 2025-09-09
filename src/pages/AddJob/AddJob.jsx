@@ -87,7 +87,7 @@ const AddJob = () => {
       <div className="shadow-lg  p-5  dark:bg-[#1a2641d5] dark:text-gray-500">
         {/* Heading */}
         <div className="mt-5 mb-8">
-          <p className="flex items-center justify-center text-3xl font-semibold bg-gradient-to-r from-[#e58891] via-purple-400 to-[#00a26e] bg-300% text-transparent bg-clip-text animate-gradient">
+          <p className="flex items-center justify-center text-3xl font-semibold bg-gradient-to-r from-[#2decaf] via-purple-400 to-[#00a26e] bg-300% text-transparent bg-clip-text animate-gradient">
             <span className="mr-3 text-[#00a26e]">
               <MdAlarmAdd />
             </span>

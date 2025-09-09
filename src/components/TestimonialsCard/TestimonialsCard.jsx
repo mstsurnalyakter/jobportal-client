@@ -30,7 +30,7 @@ const TestimonialsCard = () => {
         modules={[EffectCards, Autoplay]}
         className="w-full shadow"
       >
-        <SwiperSlide className="bg-white border-2 border-red-500">
+        <SwiperSlide className="bg-white border-2 border-[#00a26e]">
           <Card1 />
         </SwiperSlide>
         <SwiperSlide className="bg-white border-2 border-teal-500">
@@ -42,7 +42,7 @@ const TestimonialsCard = () => {
         <SwiperSlide className="bg-white border-2 border-blue-400">
           <Card4 />
         </SwiperSlide>
-        <SwiperSlide className="bg-white border-2 border-pink-800">
+        <SwiperSlide className="bg-white border-2 border-[#00a26e]">
           <Card5 />
         </SwiperSlide>
         <SwiperSlide className="bg-white border-2 border-amber-600">

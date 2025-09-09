@@ -174,7 +174,7 @@ const AllJobs = () => {
                         </p>
                       </td>
                       <td className="p-3">
-                        <button className="bg-[#fc5d6d] text-white rounded px-3 py-2">
+                        <button className="bg-[#00a26e] text-white rounded px-3 py-2">
                           <Link to={`/job/${_id}`}> View Details</Link>
                         </button>
                       </td>

@@ -15,7 +15,7 @@ const Blogs = () => {
             className="block max-w-sm border-2 shadow gap-3 mx-auto sm:max-w-full group hover:no-underline focus:no-underline lg:grid lg:grid-cols-12 dark:bg-gray-50"
           >
             <img
-              src={"/public/Access_vs_refresh_token_blog_thumbnail.webp"}
+              src={"/Access_vs_refresh_token_blog_thumbnail.webp"}
               alt=""
               className="object-cover w-full h-64 rounded sm:h-96 lg:col-span-7 dark:bg-gray-500"
             />
