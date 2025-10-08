@@ -3,27 +3,21 @@ import TestimonialsCard from './TestimonialsCard/TestimonialsCard';
 
 const Testimonials = () => {
   return (
-    <div>
-      <div className=' w-2/3 mx-auto text-center space-y-4'>
-        <h2 className='text-3xl font-bold dark:text-gray-200'>What Our Candidates Say</h2>
-        <p>
-          Discover the voices of success! Our candidates speak for themselves
-          about their transformative experiences
-        </p>
+    <div className="">
+      <div className="max-w-3xl mx-auto text-center space-y-4 mb-8">
+        <h2 className="text-3xl font-extrabold dark:text-gray-200">What Our Candidates Say</h2>
+        <p className="text-gray-600 dark:text-gray-300">Discover the voices of success — real stories from candidates who found careers through our platform.</p>
       </div>
-      <section className="">
-        <div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
-          <div className="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
-            <img
-              src={img}
-              alt=""
-              className="object-contain h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128"
-            />
+
+      <section>
+        <div className="container mx-auto p-6 sm:py-12 lg:py-20 lg:flex lg:items-center lg:justify-center gap-8">
+          <div className="hidden lg:flex items-center justify-center p-6 mt-4 h-72 w-1/3">
+            <img src={img} alt="candidate" className="object-cover h-72 w-72 rounded-2xl shadow-xl" />
           </div>
-          <div className="flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
 
-          <TestimonialsCard/>
-
+          <div className="w-full lg:w-1/2">
+           
+              <TestimonialsCard />
           </div>
         </div>
       </section>

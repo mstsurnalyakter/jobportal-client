@@ -16,31 +16,42 @@ const AddJob = () => {
 
   const { user } = useAuth();
 
-  const [startDate1, setStartDate1] = useState(new Date());
-  const [startDate2, setStartDate2] = useState(new Date());
+  const [postingDate] = useState(new Date());
+  const [deadline, setDeadline] = useState(new Date());
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+    watch,
+  } = useForm({
+    defaultValues: {
+      image: "",
+      jobTitle: "",
+      minSalary: "",
+      maxSalary: "",
+      jobCategory: "",
+      jobDescription: "",
+    },
+  });
+
+  const watched = watch();
 
   const url = "https://jobportal-server-ochre.vercel.app/add-jobs";
 
-  const { mutateAsync } = useMutation({
+  const { mutateAsync, isLoading: posting } = useMutation({
     mutationKey: ["addJob"],
     mutationFn: async (jobInfo) => {
       try {
-        const { data } = await axios.post(url, jobInfo,{withCredentials:true
-        });
+        const { data } = await axios.post(url, jobInfo, { withCredentials: true });
 
         if (data.insertedId) {
-          toast.success("Post Job successfully");
+          toast.success("Job posted successfully");
           navigate("/my-jobs");
         }
-        return data
+        return data;
       } catch (error) {
-        toast.error(error.message)
+        toast.error(error.message);
       }
     },
 
@@ -55,8 +66,6 @@ const AddJob = () => {
       jobCategory,
       jobDescription,
     } = data;
-    const postingDate = startDate1;
-    const deadline = startDate2;
 
     const jobInfo = {
       image,
@@ -67,7 +76,7 @@ const AddJob = () => {
       postingDate,
       deadline,
       jobDescription,
-      jobApplicantsNumber:0,
+      jobApplicantsNumber: 0,
       user: {
         email: user?.email,
         name: user?.displayName,
@@ -82,180 +91,108 @@ const AddJob = () => {
   };
 
   return (
-    <div className=" border border-[#00a26e]">
-      <DynamicTitle pageTitle="Add Job" />
-      <div className="shadow-lg  p-5  dark:bg-[#1a2641d5] dark:text-gray-500">
-        {/* Heading */}
-        <div className="mt-5 mb-8">
-          <p className="flex items-center justify-center text-3xl font-semibold bg-gradient-to-r from-[#2decaf] via-purple-400 to-[#00a26e] bg-300% text-transparent bg-clip-text animate-gradient">
-            <span className="mr-3 text-[#00a26e]">
-              <MdAlarmAdd />
-            </span>
-            <span className="">Post A Job</span>
-          </p>
-        </div>
-        {/* form */}
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="flex gap-8 ">
-            <div className="flex-1 space-y-6">
-              <div>
-                <label className="block mb-2 " htmlFor="image">
-                  Image
-                </label>
-                <input
-                  className="w-full p-2 border-2 rounded-md focus:outline-[#00a26e]"
-                  type="url"
-                  name="image"
-                  id="image"
-                  placeholder="Image"
-                  {...register("image", { required: true })}
-                />
-              </div>
+    <div className="max-w-6xl mx-auto p-4">
+      <DynamicTitle pageTitle="Post a Job" />
 
+      <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg overflow-hidden">
+        <header className="p-6 border-b">
+          <div className="flex items-center gap-4">
+            <div className="p-3 bg-gradient-to-r from-[#00a26e] to-[#00d08f] text-white rounded-lg">
+              <MdAlarmAdd size={22} />
+            </div>
+            <div>
+              <h1 className="text-2xl font-semibold">Create a new job post</h1>
+              <p className="text-sm text-gray-500">Publish a clear, attractive job to reach the right candidates.</p>
+            </div>
+          </div>
+        </header>
+
+        <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-1 md:grid-cols-3 gap-6 p-6">
+          <div className="md:col-span-2 space-y-4">
+            <div>
+              <label className="text-sm font-medium mb-2 block">Job Title</label>
+              <input {...register("jobTitle", { required: true })} className="w-full p-3 border rounded-md focus:ring-2 focus:ring-[#00a26e]" placeholder="Senior Frontend Developer" />
+              {errors.jobTitle && <p className="text-xs text-red-500 mt-1">Job title is required</p>}
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block mb-2 " htmlFor="jobTitle">
-                  Job Title
-                </label>
-                <input
-                  className="w-full p-2 border-2 rounded-md focus:outline-[#00a26e]"
-                  type="text"
-                  placeholder="Job Title"
-                  id="jobTitle"
-                  name="jobTitle"
-                  {...register("jobTitle", { required: true })}
-                />
+                <label className="text-sm font-medium mb-2 block">Image URL</label>
+                <input {...register("image")} className="w-full p-3 border rounded-md" placeholder="https://..." />
+                <p className="text-xs text-gray-400 mt-1">Optional — will show in the job card preview.</p>
               </div>
 
               <div>
-                <label className="block mb-2 " htmlFor="minSalary">
-                  Minimum Salary
-                </label>
-                <input
-                  className="w-full p-2 border-2 rounded-md focus:outline-[#00a26e]"
-                  type="number"
-                  placeholder="Minimum Salary"
-                  id="minSalary"
-                  name="minSalary"
-                  {...register("minSalary", { required: true })}
-                />
-              </div>
-
-              <div className="flex flex-col">
-                <label className="mb-2">Posting Date</label>
-                <DatePicker
-                  disabled
-                  selected={startDate1}
-                  onChange={(date) => setStartDate1(date)}
-                  className="p-2 border-2 rounded-md focus:outline-[#00a26e]  w-full"
-                />
-              </div>
-
-              <div className="">
-                <select
-                  name="jobCategory"
-                  id="jobCategory"
-                  className="w-full p-2  border-2 dark:text-gray-900 rounded-md focus:outline-[#00a26e]"
-                  type="text"
-                  placeholder="Select Job Category"
-                  {...register("jobCategory", { required: true })}
-                >
-                  <option value="">Select Job Category</option>
+                <label className="text-sm font-medium mb-2 block">Category</label>
+                <select {...register("jobCategory", { required: true })} className="w-full p-3 border rounded-md">
+                  <option value="">Choose a category</option>
                   <option value="On Site">On Site</option>
                   <option value="Remote">Remote</option>
                   <option value="Part-Time">Part-Time</option>
                   <option value="Hybrid">Hybrid</option>
                 </select>
+                {errors.jobCategory && <p className="text-xs text-red-500 mt-1">Please select a category</p>}
               </div>
             </div>
-            {/* Right side */}
-            <div className="flex-1 space-y-4 mb-4">
-              <div>
-                <label className="block mb-2 " htmlFor="name">
-                  Employer Name
-                </label>
-                <input
-                  className="w-full p-2 border-2 rounded-md focus:outline-[#00a26e]"
-                  type="text"
-                  name="name"
-                  defaultValue={user?.displayName}
-                  id="name"
-                  disabled
-                  placeholder="Name"
-                />
-              </div>
-              <div>
-                <label className="block mb-2 " htmlFor="name">
-                  Employer Email
-                </label>
-                <input
-                  className="w-full p-2 border-2 rounded-md focus:outline-[#00a26e]"
-                  type="text"
-                  name="email"
-                  defaultValue={user?.email}
-                  id="email"
-                  disabled
-                  placeholder="Email"
-                />
-              </div>
-              <div>
-                <label className="block mb-2 " htmlFor="minSalary">
-                  Maximum Salary
-                </label>
-                <input
-                  className="w-full p-2 border-2 rounded-md focus:outline-[#00a26e]"
-                  type="number"
-                  placeholder="Maximum Salary"
-                  id="maxSalary"
-                  name="maxSalary"
-                  {...register("maxSalary", { required: true })}
-                />
-              </div>
 
-              <div className="flex flex-col">
-                <label className="mb-2">Deadline</label>
-                <DatePicker
-                  required
-                  selected={startDate2}
-                  onChange={(date) => setStartDate2(date)}
-                  className="p-2 border-2 rounded-md focus:outline-[#00a26e]  w-full"
-                />
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label className="text-sm font-medium mb-2 block">Minimum Salary</label>
+                <input {...register("minSalary", { required: true })} type="number" className="w-full p-3 border rounded-md" placeholder="35000" />
+                {errors.minSalary && <p className="text-xs text-red-500 mt-1">Provide minimum salary</p>}
               </div>
               <div>
-                <label className="block mb-2 " htmlFor="name">
-                  Applicants
-                </label>
-                <input
-                  className="w-full dark:text-white p-2 border-2 rounded-md focus:outline-[#00a26e]"
-                  type="text"
-                  name="jobApplicantsNumber"
-                  placeholder="0"
-                  id="jobApplicantsNumber"
-                  disabled
-                />
+                <label className="text-sm font-medium mb-2 block">Maximum Salary</label>
+                <input {...register("maxSalary", { required: true })} type="number" className="w-full p-3 border rounded-md" placeholder="60000" />
+                {errors.maxSalary && <p className="text-xs text-red-500 mt-1">Provide maximum salary</p>}
               </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label className="text-sm font-medium mb-2 block">Posting Date</label>
+                <input readOnly value={new Date(postingDate).toLocaleDateString()} className="w-full p-3 border rounded-md bg-gray-50" />
+              </div>
+              <div>
+                <label className="text-sm font-medium mb-2 block">Deadline</label>
+                <DatePicker selected={deadline} onChange={(d) => setDeadline(d)} className="w-full p-3 border rounded-md" />
+              </div>
+            </div>
+
+            <div>
+              <label className="text-sm font-medium mb-2 block">Description</label>
+              <textarea {...register("jobDescription", { required: true })} rows={6} className="w-full p-3 border rounded-md" placeholder="Describe the role, responsibilities and requirements." />
+              {errors.jobDescription && <p className="text-xs text-red-500 mt-1">Description is required</p>}
             </div>
           </div>
 
-          <div className="mt-4">
-            <label className="block mb-2 " htmlFor="jobDescription">
-              Description
-            </label>
+          {/* Right column - preview & publish */}
+          <aside className="md:col-span-1">
+            <div className="sticky top-24 space-y-4">
+              <div className="p-4 border rounded-lg bg-gray-50 dark:bg-slate-800">
+                <div className="h-36 rounded-md overflow-hidden bg-gray-100 flex items-center justify-center">
+                  {watched.image ? (
+                    <img src={watched.image} alt="job" className="object-cover w-full h-full" />
+                  ) : (
+                    <div className="text-sm text-gray-400">No image</div>
+                  )}
+                </div>
 
-            <textarea
-              {...register("jobDescription", { required: true })}
-              id="jobDescription"
-              name="jobDescription"
-              placeholder="Enter Job Description"
-              className="textarea textarea-bordered border-2 p-2 rounded-md w-full focus:outline-[#f18691]"
-            ></textarea>
-          </div>
+                <h3 className="mt-3 font-semibold text-lg">{watched.jobTitle || "Job Title Preview"}</h3>
+                <p className="text-sm text-gray-500">{watched.jobCategory || "Category"} • ${watched.minSalary || "-"} - ${watched.maxSalary || "-"}</p>
+                <p className="mt-2 text-xs text-gray-400">Deadline: {deadline.toLocaleDateString()}</p>
+              </div>
 
-          <input
-            className="px-4 w-full py-2 mt-4 rounded  bg-gradient-to-r from-[#00a26e] via-purple-600 to-[#00a26e] bg-300% text-transparent animate-gradient
-              duration-200 text-white cursor-pointer font-semibold"
-            type="submit"
-            value="Add"
-          />
+              <div className="p-4 border rounded-lg bg-white dark:bg-slate-800">
+                <h4 className="font-medium mb-2">Publish</h4>
+                <p className="text-xs text-gray-500 mb-3">Preview your job and publish it when it&apos;s ready.</p>
+                <div className="flex gap-2">
+                  <button type="submit" className="flex-1 px-4 py-2 bg-gradient-to-r from-[#00a26e] to-[#00d08f] text-white rounded-md shadow">{posting ? 'Posting...' : 'Publish'}</button>
+                  <button type="button" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="px-3 py-2 border rounded-md">Preview</button>
+                </div>
+              </div>
+            </div>
+          </aside>
         </form>
       </div>
     </div>

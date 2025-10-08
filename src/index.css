@@ -13,3 +13,24 @@
   background:#00a26e;
   transform-origin: 0%;
 }
+
+/* Custom styles for react-tabs selected tab: gradient underline + active text */
+.react-tabs__tab-list {
+  gap: .5rem;
+}
+.react-tabs__tab {
+  position: relative;
+  transition: transform .18s ease, color .18s ease;
+}
+.react-tabs__tab:hover { transform: translateY(-2px); }
+.react-tabs__tab--selected {
+  color: #065f46; /* dark green */
+  font-weight: 600;
+}
+/* underline removed: decorative ::after was removed to keep a cleaner pill-only active style */
+
+/* Make selected tab text white and use green background when pill-like style is applied */
+.tab-pill-style .react-tabs__tab--selected {
+  color: white !important;
+  background: linear-gradient(90deg, #00a26e 0%, #00d08f 100%) !important;
+}

@@ -28,45 +28,35 @@ const JobProcess = () => {
 
   return (
     <div>
-      <h2 className="text-center py-5 font-bold text-4xl mx-9">
+      <h2 className="text-center py-5 font-extrabold text-4xl mx-9">
         Our Job <span className="text-[#00a26e]">Process</span>
       </h2>
-      <div className="grid gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
-        {data?.map((cardData) => (
+      <p className="text-center max-w-2xl mx-auto text-gray-600 dark:text-gray-300 mb-6">
+        A simple, three-step flow to help you get hired faster. Clean, clear, and focused.
+      </p>
+
+      <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        {data?.map((cardData, idx) => (
           <motion.div
-            key={cardData.icon}
-            animate={{
-              scale: [1, 1, 1, 1, 1],
-              rotate: [0, 0, 360, 360, 0],
-              borderRadius: ["0%", "0%", "50%", "50%", "0%"],
-            }}
-            transition={{
-              duration: 5,
-              ease: "easeInOut",
-              times: [0, 0.2, 0.5, 0.8, 1],
-              repeat: Infinity,
-              repeatDelay: 1,
-            }}
+            key={cardData.icon + idx}
+            whileHover={{ scale: 1.03 }}
+            transition={{ type: "spring", stiffness: 200, damping: 12 }}
           >
-            <Card className="mt-9  border-2">
-              <CardBody className="flex items-center justify-center flex-col space-y-3">
-                <div className="text-2xl">
-                  <ion-icon name={cardData.icon} className=""></ion-icon>
+            <Card className="mt-4 rounded-2xl border-0 shadow-lg hover:shadow-2xl">
+              <CardBody className="flex items-start flex-col space-y-4 p-6">
+                <div className="flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-[#00a26e] to-[#00d08f] text-white text-2xl shadow-inner">
+                  <ion-icon name={cardData.icon}></ion-icon>
                 </div>
-                <Typography
-                  variant="h5"
-                  color="blue-gray"
-                  className="mb-2 text-[#00a26e]"
-                >
+                <Typography variant="h6" color="blue-gray" className="mb-1 text-[#00a26e] font-semibold">
                   {cardData.title}
                 </Typography>
-                <Typography variant="small">{cardData.description}</Typography>
-                <Link className="" to={"/all-jobs"}>
-                  <button className="bg-[#00a26e] px-3 flex items-center gap-2 py-2 rounded-md text-white">
+                <Typography variant="small" className="text-gray-600 dark:text-gray-300">{cardData.description}</Typography>
+                <div className="mt-4 w-full flex justify-end">
+                  <Link to={"/all-jobs"} className="inline-flex items-center gap-2 bg-[#00a26e] hover:bg-[#00c37f] text-white px-4 py-2 rounded-lg">
                     <span>Apply Job</span>
                     <ion-icon name="arrow-forward-outline"></ion-icon>
-                  </button>
-                </Link>
+                  </Link>
+                </div>
               </CardBody>
             </Card>
           </motion.div>

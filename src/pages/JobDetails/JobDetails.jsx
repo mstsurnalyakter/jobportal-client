@@ -163,51 +163,100 @@ const url2 = "https://jobportal-server-ochre.vercel.app/apply-job";
 
 
   return (
-    <div>
-      <header className="">
-        <DynamicTitle pageTitle="Job Details" />
-        <div className="h-[350px]">
-          <img src={image} alt="" className="w-full h-full" />
+    <div className="bg-white dark:bg-gray-900">
+      <DynamicTitle pageTitle="Job Details" />
+
+      <header className="relative h-64 md:h-80 lg:h-96">
+        <img src={image} alt="" className="object-cover w-full h-full brightness-75" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+        <div className="absolute left-6 right-6 bottom-6 text-white">
+          <div className="max-w-4xl">
+            <h1 className="text-2xl md:text-4xl font-extrabold">{jobTitle}</h1>
+            <div className="mt-2 flex flex-wrap gap-3 items-center">
+              <span className="px-3 py-1 rounded-full bg-white/10">{jobCategory}</span>
+              <span className="px-3 py-1 rounded-full bg-white/10">{jobApplicantsNumber || 0} applicants</span>
+              <span className="px-3 py-1 rounded-full bg-white/10">Deadline: {new Date(deadline).toLocaleDateString()}</span>
+            </div>
+          </div>
         </div>
       </header>
 
-      <div className="shadow-md dark:bg-gray-300 border space-y-5 mx-auto px-8 py-8 lg:py-10 lg:px-10">
-        <h2 className="text-4xl font-medium">{jobTitle}</h2>
-        <div className="flex gap-3">
-          <p>
-            <b>Employer Name:</b> {user1?.name}
-          </p>
-          <p>
-            <b>Employer Email:</b> {user1?.email}
-          </p>
+      <main className="container mx-auto px-6 py-12">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <article className="lg:col-span-2 space-y-6">
+            <div className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow">
+              <div className="flex items-center justify-between flex-wrap gap-4">
+                <div>
+                  <h2 className="text-2xl font-bold">{jobTitle}</h2>
+                  <p className="text-sm text-gray-500">Posted on {new Date(postingDate).toLocaleDateString()}</p>
+                </div>
+                <div className="text-right">
+                  <div className="text-lg font-semibold">${minSalary}-{maxSalary} <span className="text-sm font-normal">/month</span></div>
+                  <div className="text-sm text-gray-500">Type: {jobCategory}</div>
+                </div>
+              </div>
+
+              <div className="mt-6 prose dark:prose-invert max-w-none">
+                <h3 className="text-xl font-semibold">Job description</h3>
+                <p>{jobDescription}</p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow">
+                <h4 className="font-semibold mb-2">Employer</h4>
+                <p className="text-sm text-gray-600">{user1?.name}</p>
+                <p className="text-sm text-gray-600">{user1?.email}</p>
+              </div>
+
+              <div className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow">
+                <h4 className="font-semibold mb-2">Details</h4>
+                <ul className="text-sm text-gray-600 space-y-1">
+                  <li><strong>Applicants:</strong> {jobApplicantsNumber}</li>
+                  <li><strong>Posting Date:</strong> {new Date(postingDate).toLocaleDateString()}</li>
+                  <li><strong>Deadline:</strong> {new Date(deadline).toLocaleDateString()}</li>
+                  <li><strong>Category:</strong> {jobCategory}</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Related / similar jobs placeholder */}
+            <div className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow">
+              <h4 className="font-semibold mb-3">Similar jobs</h4>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="p-3 border rounded hover:shadow-lg">Sample Job Title at Company A</div>
+                <div className="p-3 border rounded hover:shadow-lg">Sample Job Title at Company B</div>
+              </div>
+            </div>
+          </article>
+
+          <aside className="lg:col-span-1">
+            <div className="sticky top-24 space-y-4">
+              <div className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow">
+                <div className="flex items-center gap-3">
+                  <img src={image} alt="company" className="w-14 h-14 rounded object-cover" />
+                  <div>
+                    <h5 className="font-semibold">{user1?.name}</h5>
+                    <p className="text-sm text-gray-500">{user1?.email}</p>
+                  </div>
+                </div>
+
+                <div className="mt-4">
+                  <div className="text-sm text-gray-500">Salary</div>
+                  <div className="text-lg font-semibold">${minSalary}-{maxSalary} <span className="text-sm font-normal">/month</span></div>
+                </div>
+
+                <button onClick={openApplicationModal} className="mt-6 w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#00a26e] to-[#00d08f] text-white px-4 py-3 rounded-md font-semibold">Apply now</button>
+              </div>
+
+              <div className="p-4 bg-white dark:bg-gray-800 rounded-lg shadow">
+                <h6 className="font-semibold mb-2">Need help?</h6>
+                <p className="text-sm text-gray-500">Contact support at <a className="text-[#00a26e]" href="mailto:jobportal@gmail.com">jobportal@gmail.com</a></p>
+              </div>
+            </div>
+          </aside>
         </div>
-        <p>
-          <b>Applicants:</b> {jobApplicantsNumber}
-        </p>
-        <p>
-          <b>Type:</b> {jobCategory}
-        </p>
-        <p>
-          <b>Salary Range:</b> ${minSalary}-${maxSalary}
-          <span className="text-sm">/month</span>
-        </p>
-        <p>
-          <b>Posting Date:</b> {new Date(postingDate).toLocaleDateString()}
-        </p>
-        <p>
-          <b>Deadline:</b> {new Date(deadline).toLocaleDateString()}
-        </p>
-        <p>
-          <b>Description:</b> {jobDescription}
-        </p>
-        <button
-          onClick={openApplicationModal}
-          className="px-4 w-full py-2 mt-4 rounded  bg-gradient-to-r from-[#00a26e] via-purple-600 to-[#00a26e] bg-300% text-transparent animate-gradient
-              duration-200 text-white cursor-pointer font-semibold"
-        >
-          Apply
-        </button>
-      </div>
+      </main>
     </div>
   );
 }

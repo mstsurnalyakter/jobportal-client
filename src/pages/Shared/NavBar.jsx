@@ -69,17 +69,7 @@ function NavList() {
           My Jobs
         </NavLink>
       )}
-      <NavLink
-        to={"/blogs"}
-        className={({ isActive }) =>
-          isActive
-            ? "bg-[#00a26e] px-3 py-1  text-white  rounded-lg"
-            : "p-2 text-[#131313CC]"
-        }
-      >
-        Blogs
-      </NavLink>
-      {user && (
+         {user && (
         <NavLink
           to={"/applied-jobs"}
           className={({ isActive }) =>
@@ -91,6 +81,41 @@ function NavList() {
           Applied Jobs
         </NavLink>
       )}
+      <NavLink
+        to={"/blogs"}
+        className={({ isActive }) =>
+          isActive
+            ? "bg-[#00a26e] px-3 py-1  text-white  rounded-lg"
+            : "p-2 text-[#131313CC]"
+        }
+      >
+        Blogs
+      </NavLink>
+
+      <NavLink
+        to={"/about"}
+        className={({ isActive }) =>
+          isActive
+            ? "bg-[#00a26e] px-3 py-1  text-white  rounded-lg"
+            : "p-2 text-[#131313CC]"
+        }
+      >
+        About
+      </NavLink>
+
+      <NavLink
+        to={"/contact"}
+        className={({ isActive }) =>
+          isActive
+            ? "bg-[#00a26e] px-3 py-1  text-white  rounded-lg"
+            : "p-2 text-[#131313CC]"
+        }
+      >
+        Contact
+      </NavLink>
+
+
+   
       {user && (
         <NavLink
           to={"/profile"}
@@ -185,7 +210,7 @@ const NavBar = () => {
   }, []);
 
   return (
-    <div className="shadow-lg sticky top-0 z-50 dark:bg-slate-900 duration-100">
+    <div className="shadow sticky top-0 z-50 dark:bg-slate-900 duration-100">
       <Navbar className="mx-auto max-w-7xl  shadow-none rounded-none px-3 lg:px-2 pt-4  mb-6 lg:py-5">
         <div className="flex items-center justify-between">
           <Typography className="mr-4 cursor-pointer py-1.5 lg:ml-2 flex items-center">

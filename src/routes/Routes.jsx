@@ -12,11 +12,13 @@ import UpdateJob from "../pages/UpdateJob/UpdateJob";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Profile from "../pages/Profile/Profile";
 import UpdateProfile from "../pages/UpdateProfile/UpdateProfile";
-import Blogs from "../pages/Blogs/Blogs";
-import TokenDetails from "../pages/TokenDetails/TokenDetails";
-import FrameworksBlog from "../pages/FrameworksBlog/FrameworksBlog";
+
 import PrivateRoute from "../provider/PrivateRoute";
-import CodeExplanationBlog from "../pages/CodeExplanationBlog/CodeExplanationBlog";
+import BlogDetail from "../pages/Blogs/BlogDetail";
+import Blogs from "../pages/Blogs/Blogs";
+import About from "../pages/Static/About";
+import Contact from "../pages/Static/Contact";
+
 
 const router = createBrowserRouter([
   {
@@ -100,18 +102,18 @@ const router = createBrowserRouter([
         path: "/blogs",
         element: <Blogs />,
       },
-      {
-        path: "/token-blog",
-        element: <TokenDetails />,
+       {
+        path: "/blog/:id",
+        element: <BlogDetail />,
       },
       {
-        path: "/frameworks-blog",
-        element: <FrameworksBlog />,
+        path: "/about",
+        element: <About />,
       },
       {
-        path: "/code-explain",
-        element:<CodeExplanationBlog/>
-      },
+        path: "/contact",
+        element: <Contact />,
+      }
     ],
   },
 ]);
