@@ -175,21 +175,25 @@ const NavBar = () => {
   };
 
   useEffect(() => {
-    switch (theme) {
-      case "dark":
-        element.classList.add("dark");
-        localStorage.setItem("theme", "dark");
-        break;
-      case "light":
-        element.classList.remove("dark");
-        localStorage.setItem("theme", "light");
-        break;
-      default:
-        localStorage.removeItem("theme");
-        onWindowMatch();
-        break;
-    }
-  }, [theme]);
+    const handleThemeChange = () => {
+      switch (theme) {
+        case "dark":
+          element.classList.add("dark");
+          localStorage.setItem("theme", "dark");
+          break;
+        case "light":
+          element.classList.remove("dark");
+          localStorage.setItem("theme", "light");
+          break;
+        default:
+          localStorage.removeItem("theme");
+          onWindowMatch();
+          break;
+      }
+    };
+    handleThemeChange();
+    // No need to add element.classList as a dependency
+  }, [theme, onWindowMatch]);
 
   darkQuery.addEventListener("change", (e) => {
     if (!("theme" in localStorage)) {
